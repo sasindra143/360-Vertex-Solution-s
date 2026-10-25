@@ -14,7 +14,7 @@ const projects = [
   {
     name: "Froot Bowl",
     category: "Fruit e-commerce",
-    description: "A responsive fruit-ordering store with customer accounts, delivery addresses, and an admin dashboard.",
+    description: "A responsive fruit store with ₹59 and ₹89 box options, map-based delivery addresses, order tracking, and order management tools.",
     image: "/client-projects/froot-bowl-storefront.jpg",
     imageAlt: "Screenshot of the Froot Bowl fruit-ordering storefront",
     url: "https://froot-bowl.netlify.app/",

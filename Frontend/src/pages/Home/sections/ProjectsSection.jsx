@@ -19,7 +19,7 @@ const projectCards = [
   {
     title: "Froot Bowl",
     type: "E-commerce Website",
-    description: "A responsive fruit-ordering store with customer accounts, delivery addresses, order placement, and an admin dashboard for order and report management.",
+    description: "Order fruit boxes priced at ₹59 and ₹89, select delivery addresses on a map, and track orders. The admin dashboard manages orders, delivery statuses, customer details, and sales summaries.",
     image: "/client-projects/froot-bowl-storefront.jpg",
     website: "https://froot-bowl.netlify.app/",
   },
