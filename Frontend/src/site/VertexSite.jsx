@@ -238,6 +238,42 @@ const projects = [
     href: "https://sasindra143.github.io/Coffe-Website/",
   },
   {
+    slug: "graphic-design-showcase",
+    category: "Graphic Design",
+    title: "Graphic Design Showcase",
+    type: "Graphic Design · Brand & food creatives",
+    description: "Explore graphic design demos featuring Balanced Bowl food creatives, brand logos, and promotional artwork. The collection highlights bold visual identities and campaign-ready designs for digital platforms.",
+    overview: "A collection of graphic design demos featuring Balanced Bowl Kitchen food creatives, brand identity work, and digital promotional artwork.",
+    highlights: ["Food and nutrition promotional graphics", "Balanced Bowl Kitchen campaign artwork", "Brand logo and identity concepts", "Digital-first visual design"],
+    image: "/graphic-design/balanced-bowl-benefits.png",
+    screenshots: [
+      {
+        src: "/graphic-design/balanced-bowl-benefits.png",
+        alt: "Balanced Bowl graphic design poster describing bowl benefits and nutrition",
+      },
+      {
+        src: "/graphic-design/balanced-bowl-meal.png",
+        alt: "Balanced Bowl Kitchen non-vegetarian power meal promotional design",
+      },
+      {
+        src: "/graphic-design/vertex-solutions-promo.png",
+        alt: "360 Vertex Solutions promotional graphic for web development, SEO, portfolios, and digital marketing",
+      },
+      {
+        src: "/graphic-design/home-interior-logo.png",
+        alt: "HCD Home Interior logo design in black and gold",
+      },
+      {
+        src: "/graphic-design/balanced-bowl-nonveg.png",
+        alt: "Balanced Bowl Kitchen non-vegetarian bowl promotional graphic with nutrition details",
+      },
+      {
+        src: "/graphic-design/balanced-bowl-meal-benefits.png",
+        alt: "Balanced Bowl Kitchen meal graphic showing a balanced meal and nutrition breakdown",
+      },
+    ],
+  },
+  {
     slug: "wedding-invitation",
     category: "Events",
     title: "Wedding Invitation Website",
@@ -708,6 +744,29 @@ export function BusinessPage() {
     <section className="vx-section"><div className="vx-container"><SectionTitle eyebrow="WHAT WE DO" title="Digital foundations and growth." copy="Choose the services you need today. We can discuss how they fit together around your business." /><div className="vx-service-grid">{businessServices.map((service) => { const Icon = service.icon; return <Link className="vx-service-card" to={service.href} key={service.title}><Icon size={21} /><h3>{service.title}</h3><p>{service.copy}</p><span>Explore service <ArrowUpRight size={15} /></span></Link>; })}</div></div></section>
     <section className="vx-section vx-section--soft"><div className="vx-container vx-industries"><div><SectionTitle eyebrow="WHO WE SUPPORT" title="Built for businesses at different stages." copy="We work with people who want a thoughtful, useful digital presence." /></div><div className="vx-industry-list">{["Startups & small businesses", "Local service providers", "E-commerce brands", "Educational institutions", "Growing teams & established brands"].map((item) => <span key={item}><Check size={16} />{item}</span>)}</div></div></section>
     <section className="vx-section"><div className="vx-container"><div className="vx-section-heading-row"><SectionTitle eyebrow="SELECTED BUSINESS PROJECTS" title="Digital work with a purpose." /><Link className="vx-text-link" to="/work">See our work <ArrowRight size={16} /></Link></div><ProjectGrid slugs={["pr-skillverse", "vaakya-creations", "froot-bowl"]} /></div></section>
+    <section className="vx-section vx-section--soft">
+      <div className="vx-container">
+        <div className="vx-section-heading-row">
+          <SectionTitle eyebrow="GRAPHIC DESIGN DEMOS" title="Creative visuals for memorable brands." />
+          <Link className="vx-text-link" to="/work/graphic-design-showcase">View design collection <ArrowRight size={16} /></Link>
+        </div>
+        <p className="vx-graphic-design__intro">
+          Explore Balanced Bowl food creatives, brand identities, and digital campaign artwork. Open the collection to browse all six designs.
+        </p>
+        <div className="vx-graphic-design-grid">
+          {projects.find((project) => project.slug === "graphic-design-showcase").screenshots.map((screenshot, index) => (
+            <Link
+              className="vx-graphic-design-card"
+              key={screenshot.src}
+              to="/work/graphic-design-showcase"
+              aria-label={`View graphic design demo ${index + 1}: ${screenshot.alt}`}
+            >
+              <img src={screenshot.src} alt={screenshot.alt} loading="lazy" />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
     <section className="vx-section vx-section--soft"><div className="vx-container"><SectionTitle eyebrow="OUR PROCESS" title="From first conversation to launch." align="center" /><div className="vx-process-grid">{[["01", "Discover", "Your goals, audience, services, timeline, and budget."], ["02", "Define", "A practical scope, clear deliverables, and shared priorities."], ["03", "Create", "Design and development shaped by your feedback."], ["04", "Launch & review", "A considered handover and next-step conversation."]].map(([n, t, c]) => <article className="vx-process-step" key={n}><span>{n}</span><h3>{t}</h3><p>{c}</p></article>)}</div></div></section>
     <div id="business-enquiry"><ContactBlock audience="business" /></div>
   </>;
@@ -728,7 +787,7 @@ export function StudentsPage() {
 
 export function WorkPage() {
   const [filter, setFilter] = useState("All work");
-  const filters = ["All work", "Business", "CRM", "Education", "Technical", "Personal", "Events"];
+  const filters = ["All work", "Business", "CRM", "Education", "Graphic Design", "Technical", "Personal", "Events"];
   const items = filter === "All work" ? projects : projects.filter((project) => project.category === filter);
   return <><PageIntro eyebrow="OUR WORK" title="A collection of digital work and learning projects." copy="Explore websites, education and business platforms, CRM tools, and technical projects. Open a project preview to see its details and available live demo." /><section className="vx-section"><div className="vx-container"><div className="vx-filter" aria-label="Filter projects">{filters.map((item) => <button className={filter === item ? "is-active" : ""} key={item} type="button" aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}</button>)}</div><ProjectGridItems items={items} /></div></section><section className="vx-cta-band"><div className="vx-container vx-cta-band__inner"><div><Eyebrow>HAVE A PROJECT IN MIND?</Eyebrow><h2>Let’s make it yours.</h2></div><CtaLink to="/contact">Talk with us</CtaLink></div></section></>;
 }
