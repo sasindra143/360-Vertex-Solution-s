@@ -1,0 +1,70 @@
+.schedule,
+.register {
+  min-height: 100vh;
+  background: #f5c400;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 60px;
+  gap: 40px;
+}
+
+.schedule-left {
+  background: #fff7d6;
+  padding: 40px;
+  border-radius: 18px;
+}
+
+.schedule-right {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 18px;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.time-grid button {
+  padding: 12px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+}
+
+.continue-btn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 14px;
+  background: black;
+  color: white;
+  border: none;
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.register input,
+.register textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.register button {
+  background: black;
+  color: white;
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .schedule {
+    grid-template-columns: 1fr;
+  }
+}

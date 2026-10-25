@@ -1,0 +1,106 @@
+.why-it-matters {
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #0b1220, #020617);
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.wim-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.wim-pill {
+  display: inline-block;
+  background: rgba(59,130,246,0.15);
+  color: #60a5fa;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.wim-title {
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.wim-title span {
+  color: #818cf8;
+}
+
+.wim-subtitle {
+  max-width: 620px;
+  margin: 0 auto 50px;
+  color: #cbd5f5;
+  font-size: 16px;
+}
+
+/* STATS */
+.wim-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 50px;
+}
+
+.wim-stat {
+  padding: 26px;
+  border-radius: 16px;
+  font-weight: 700;
+}
+
+.wim-stat h3 {
+  font-size: 30px;
+  margin-bottom: 4px;
+}
+
+.blue { background: linear-gradient(135deg,#2563eb,#1e40af); }
+.green { background: linear-gradient(135deg,#16a34a,#065f46); }
+.orange { background: linear-gradient(135deg,#f97316,#9a3412); }
+.purple { background: linear-gradient(135deg,#8b5cf6,#4c1d95); }
+
+/* CARDS */
+.wim-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.wim-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 26px;
+  border-radius: 18px;
+  text-align: left;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.wim-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+.wim-card h4 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.wim-card p {
+  color: #dbeafe;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .wim-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wim-cards {
+    grid-template-columns: 1fr;
+  }
+}

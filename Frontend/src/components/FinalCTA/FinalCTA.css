@@ -1,0 +1,101 @@
+.final-cta-section {
+  position: relative;
+  padding: 120px 20px;
+  overflow: hidden;
+}
+
+.final-cta-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #020b18 0%, #0a0a28 50%, #020b18 100%);
+}
+
+.fcta-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.fcta-orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0, 114, 255, 0.2), transparent 70%);
+  top: -100px; left: -100px;
+  animation: orbFloat 10s ease-in-out infinite;
+}
+
+.fcta-orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(142, 45, 226, 0.15), transparent 70%);
+  bottom: -100px; right: -100px;
+  animation: orbFloat 8s ease-in-out infinite reverse;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+
+.fcta-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0,198,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,198,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.final-cta-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.final-cta-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.final-cta-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.final-cta-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-whatsapp {
+  background: linear-gradient(90deg, #25d366, #128c7e);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+}
+
+.final-cta-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

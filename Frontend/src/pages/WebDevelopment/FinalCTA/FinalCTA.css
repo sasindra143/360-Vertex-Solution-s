@@ -1,0 +1,44 @@
+/* ===============================
+   FINAL CTA
+================================ */
+
+.final-cta {
+  padding: 120px 20px;
+  background: linear-gradient(135deg, #f5c400, #ffdb4d);
+  color: #000;
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.final-cta p {
+  max-width: 720px;
+  margin: 0 auto 28px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.final-cta .btn {
+  margin-top: 10px;
+}
+
+.cta-note {
+  margin-top: 22px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .final-cta {
+    padding: 90px 16px;
+  }
+
+  .final-cta p {
+    font-size: 15px;
+  }
+}

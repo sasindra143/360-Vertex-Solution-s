@@ -1,0 +1,296 @@
+/* ===============================
+   SECTION
+================================ */
+.portfolio-section {
+  padding: 140px 6%;
+  background:
+    radial-gradient(60% 60% at 50% 0%, rgba(168,85,247,0.25), transparent 70%),
+    #05050d;
+  color: #e5e7eb;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===============================
+   HEADER
+================================ */
+.portfolio-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 100px;
+}
+
+.portfolio-pill {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  background: rgba(180,90,255,0.15);
+  color: #b45aff;
+  margin-bottom: 20px;
+}
+
+.portfolio-header h2 {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.portfolio-header h2 span {
+  color: #b45aff;
+}
+
+.portfolio-header p {
+  margin-top: 16px;
+  font-size: 15px;
+  color: #9ca3af;
+}
+
+/* ===============================
+   MARQUEE OVERRIDE
+================================ */
+.portfolio-marquee {
+  width: 100%;
+  overflow: visible;
+}
+
+.portfolio-track {
+  display: block;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* ===============================
+   GRID – WIDER CARDS
+================================ */
+.portfolio-grid {
+  display: grid !important;
+
+  /* KEY CHANGE */
+  grid-template-columns: repeat(5, minmax(340px, 1fr));
+
+  gap: 40px;
+
+  /* wider container */
+  max-width: 1900px;
+  width: 100%;
+  margin: 0 auto 60px;
+
+  animation: none !important;
+  transform: none !important;
+}
+
+/* ===============================
+   CARD
+================================ */
+.template-card {
+  position: relative;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #0b0b14, #05050d);
+  border: 1px solid rgba(168,85,247,0.35);
+  box-shadow: 0 0 60px rgba(168,85,247,0.15);
+  overflow: hidden;
+  transition: 0.35s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 110px rgba(168,85,247,0.5);
+}
+
+/* ===============================
+   BADGE
+================================ */
+.template-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  z-index: 10;
+}
+
+/* ===============================
+   PREVIEW
+================================ */
+.preview-frame {
+  padding: 18px;
+  background: #05050d;
+}
+
+.preview-frame img {
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+}
+
+/* ===============================
+   BODY
+================================ */
+.card-body {
+  padding: 28px;
+}
+
+.template-plan {
+  font-size: 12px;
+  color: #b45aff;
+}
+
+.card-body h3 {
+  font-size: 23px;
+  margin: 10px 0;
+}
+
+.card-body p {
+  font-size: 14.5px;
+  color: #9ca3af;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+/* ===============================
+   FEATURES
+================================ */
+.feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.feature-list span {
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(168,85,247,0.15);
+  color: #d8b4fe;
+}
+
+/* ===============================
+   BUTTON
+================================ */
+.view-btn {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.view-btn:hover {
+  box-shadow: 0 0 45px rgba(168,85,247,0.9);
+}
+
+/* ===============================
+   MORE PORTFOLIOS
+================================ */
+.more-portfolios-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.more-portfolios-body h3 {
+  font-size: 23px;
+  margin: 14px 0;
+}
+
+.more-portfolio-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.more-portfolio-buttons a {
+  padding: 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14.5px;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.portfolio-footer {
+  margin-top: 130px;
+  text-align: center;
+}
+
+.portfolio-footer p {
+  color: #9ca3af;
+  font-size: 15px;
+}
+
+.portfolio-footer p span {
+  color: #b45aff;
+}
+
+.portfolio-footer-btn {
+  margin-top: 26px;
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(168,85,247,0.5);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.portfolio-footer-btn:hover {
+  background: rgba(168,85,247,0.15);
+  box-shadow: 0 0 40px rgba(168,85,247,0.6);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 1400px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(4, minmax(320px, 1fr));
+    max-width: 1400px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    max-width: 1050px;
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    max-width: 720px;
+  }
+
+  .portfolio-header h2 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .portfolio-header h2 {
+    font-size: 30px;
+  }
+
+  .portfolio-header p {
+    font-size: 14px;
+  }
+}

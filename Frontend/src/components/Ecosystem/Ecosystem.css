@@ -1,0 +1,115 @@
+.eco-section {
+  background: linear-gradient(180deg, #050b14 0%, #080b1a 100%);
+}
+
+.eco-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.eco-card {
+  padding: 32px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.eco-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--eco-color);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(0,0,0,0.2);
+}
+
+.eco-glow {
+  position: absolute;
+  width: 200px; height: 200px;
+  bottom: -60px; right: -60px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.eco-card:hover .eco-glow { opacity: 1; }
+
+.eco-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.eco-icon {
+  font-size: 2rem;
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.eco-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+  line-height: 1;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.eco-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.eco-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.eco-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.eco-service-chip {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-secondary);
+}
+
+.eco-explore {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: gap 0.3s ease;
+  margin-top: 4px;
+}
+
+.eco-explore:hover { gap: 12px; }
+
+@media (max-width: 1000px) { .eco-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .eco-grid { grid-template-columns: 1fr; } }

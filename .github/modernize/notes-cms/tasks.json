@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "plan": ".github/modernize/notes-cms/plan.md",
+  "requirements": [
+    { "id": "REQ-001", "title": "Admin dashboard" },
+    { "id": "REQ-002", "title": "Note metadata and workflow state" },
+    { "id": "REQ-003", "title": "Safe rich-text authoring" },
+    { "id": "REQ-004", "title": "Ordered content blocks" },
+    { "id": "REQ-005", "title": "Persistent media storage" },
+    { "id": "REQ-006", "title": "Category management" },
+    { "id": "REQ-007", "title": "Admin search and list controls" },
+    { "id": "REQ-008", "title": "Draft and publication workflow" },
+    { "id": "REQ-009", "title": "Published-only public pages" },
+    { "id": "REQ-010", "title": "Public search and pagination" },
+    { "id": "REQ-011", "title": "Canonical MongoDB collections" },
+    { "id": "REQ-012", "title": "Validated REST APIs" },
+    { "id": "REQ-013", "title": "Authentication and publication boundaries" },
+    { "id": "REQ-014", "title": "Non-destructive data transition" },
+    { "id": "REQ-015", "title": "Accessible responsive UI" },
+    { "id": "REQ-016", "title": "Verification" }
+  ],
+  "tasks": [
+    {
+      "id": "T-001",
+      "title": "Confirm current routes, auth, database targeting, and legacy data shape",
+      "status": "done",
+      "requirements": ["REQ-011", "REQ-013", "REQ-014"],
+      "dependsOn": []
+    },
+    {
+      "id": "T-002",
+      "title": "Add the selected editor, sanitizer, and backend test dependencies",
+      "status": "pending",
+      "requirements": ["REQ-003", "REQ-016"],
+      "dependsOn": ["T-001"]
+    },
+    {
+      "id": "T-003",
+      "title": "Implement explicit database selection, CMS schemas, indexes, and safe initialization",
+      "status": "pending",
+      "requirements": ["REQ-002", "REQ-006", "REQ-011", "REQ-014"],
+      "dependsOn": ["T-001"]
+    },
+    {
+      "id": "T-004",
+      "title": "Implement validated GridFS media uploads, streaming, and ownership checks",
+      "status": "pending",
+      "requirements": ["REQ-005", "REQ-012", "REQ-013", "REQ-014"],
+      "dependsOn": ["T-003"]
+    },
+    {
+      "id": "T-005",
+      "title": "Implement authenticated admin and published-only public APIs",
+      "status": "pending",
+      "requirements": ["REQ-001", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-012", "REQ-013"],
+      "dependsOn": ["T-003", "T-004"]
+    },
+    {
+      "id": "T-006",
+      "title": "Implement the admin dashboard, filters, pagination, and category controls",
+      "status": "pending",
+      "requirements": ["REQ-001", "REQ-006", "REQ-007", "REQ-015"],
+      "dependsOn": ["T-005"]
+    },
+    {
+      "id": "T-007",
+      "title": "Implement the note editor, rich text, ordered blocks, media, and workflow controls",
+      "status": "pending",
+      "requirements": ["REQ-002", "REQ-003", "REQ-004", "REQ-005", "REQ-008", "REQ-015"],
+      "dependsOn": ["T-002", "T-005"]
+    },
+    {
+      "id": "T-008",
+      "title": "Implement published public listing, detail, safe rendering, and share links",
+      "status": "pending",
+      "requirements": ["REQ-009", "REQ-010", "REQ-015"],
+      "dependsOn": ["T-005"]
+    },
+    {
+      "id": "T-009",
+      "title": "Verify uploads, persistence, access boundaries, queries, build, lint, and tests",
+      "status": "pending",
+      "requirements": ["REQ-005", "REQ-007", "REQ-008", "REQ-009", "REQ-012", "REQ-013", "REQ-014", "REQ-016"],
+      "dependsOn": ["T-006", "T-007", "T-008"]
+    }
+  ]
+}

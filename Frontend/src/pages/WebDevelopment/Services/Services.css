@@ -1,0 +1,193 @@
+/* ================= SERVICES SECTION ================= */
+.services {
+  padding: 120px 20px;
+  background: #0b1220; /* DARK BASE */
+  position: relative;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #e5e7eb;
+}
+
+/* GRID BACKGROUND */
+.services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  z-index: 0;
+}
+
+/* CONTAINER */
+.services-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= HEADER ================= */
+.services-pill {
+  display: inline-block;
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.services-title {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.services-title span {
+  color: #60a5fa;
+}
+
+.services-subtitle {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+/* ================= GRID ================= */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ================= CARD ================= */
+.service-card {
+  background: #0f172a; /* DARK CARD */
+  border-radius: 18px;
+  padding: 28px;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.06),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+.service-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(37, 99, 235, 0.35);
+  border-color: rgba(96,165,250,0.4);
+}
+
+/* ================= ICON ================= */
+.service-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+/* ================= TITLE ================= */
+.service-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* ================= DESCRIPTION ================= */
+.service-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cbd5f5;
+  margin-bottom: 18px;
+}
+
+/* ================= TAGS ================= */
+.service-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.service-tags span {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: #e5e7eb;
+}
+
+/* ================= COLOR VARIANTS ================= */
+.blue .service-icon {
+  background: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+}
+
+.green .service-icon {
+  background: rgba(22, 163, 74, 0.2);
+  color: #4ade80;
+}
+
+.cyan .service-icon {
+  background: rgba(8, 145, 178, 0.2);
+  color: #22d3ee;
+}
+
+.purple .service-icon {
+  background: rgba(124, 58, 237, 0.2);
+  color: #c4b5fd;
+}
+
+.orange .service-icon {
+  background: rgba(234, 88, 12, 0.2);
+  color: #fb923c;
+}
+
+.pink .service-icon {
+  background: rgba(219, 39, 119, 0.2);
+  color: #f472b6;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .services {
+    padding: 90px 16px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}

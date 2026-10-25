@@ -1,0 +1,140 @@
+.testimonials-section {
+  padding: 140px 6%;
+  background: #05050d;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* HEADER */
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.testimonials-pill {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(168,85,247,.6);
+  color: #b45aff;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.testimonials-title {
+  font-size: 44px;
+  margin: 20px 0;
+}
+
+.testimonials-title span {
+  color: #b45aff;
+}
+
+.testimonials-subtitle {
+  max-width: 600px;
+  margin: auto;
+  color: #aaa;
+}
+
+/* SLIDER */
+.testimonial-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 30px;
+  animation: scrollLeft 35s linear infinite;
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* CARD */
+.testimonial-card {
+  min-width: 340px;
+  max-width: 340px;
+  padding: 28px;
+  border-radius: 18px;
+  background: linear-gradient(180deg,#0b0b14,#05050d);
+  border: 1px solid rgba(180,90,255,.25);
+  box-shadow: 0 0 30px rgba(168,85,247,.15);
+}
+
+.testimonial-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #b45aff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.testimonial-footer h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.testimonial-footer span {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.stars {
+  margin-top: 14px;
+  color: #b45aff;
+}
+
+/* CTA */
+.testimonial-cta {
+  text-align: center;
+  margin-top: 120px;
+}
+
+.testimonial-cta h3 {
+  font-size: 32px;
+}
+
+.testimonial-cta span {
+  color: #b45aff;
+}
+
+.testimonial-cta p {
+  margin: 12px 0 30px;
+  color: #aaa;
+}
+
+.testimonial-btn {
+  padding: 14px 34px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg,#a855f7,#7c3aed);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .testimonial-card {
+    min-width: 280px;
+  }
+}

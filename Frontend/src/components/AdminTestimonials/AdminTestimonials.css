@@ -1,0 +1,36 @@
+.admin-testimonials {
+  padding: 120px 24px;
+  background: #0b0f14;
+  color: #fff;
+}
+
+.admin-testimonials h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.admin-testimonials form {
+  max-width: 480px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-testimonials input,
+.admin-testimonials textarea {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #1a222c;
+  color: #fff;
+}
+
+.admin-testimonials button {
+  padding: 14px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #5dade2, #48c9b0);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}

@@ -1,0 +1,152 @@
+/* ===============================
+   WHY CHOOSE SECTION
+================================ */
+
+.why-choose {
+  padding: 120px 20px;
+  background: #f1f7ff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #0f172a;
+}
+
+.why-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===============================
+   TITLE
+================================ */
+
+.why-title {
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.why-title span {
+  color: #2563eb;
+}
+
+.why-subtitle {
+  font-size: 16px;
+  color: #475569;
+  margin-bottom: 50px;
+}
+
+/* ===============================
+   TABLE WRAPPER
+================================ */
+
+.why-table {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(37, 99, 235, 0.12);
+}
+
+/* ===============================
+   ROWS
+================================ */
+
+.why-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  align-items: center;
+  padding: 18px 24px;
+  font-size: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.why-row:last-child {
+  border-bottom: none;
+}
+
+/* HEADER ROW */
+.why-row.head {
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===============================
+   COLUMN STYLES
+================================ */
+
+.why-row div {
+  text-align: center;
+}
+
+.why-row div:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* ===============================
+   HIGHLIGHT COLUMN (360 VERTEX)
+================================ */
+
+.why-row .highlight {
+  color: #16a34a;
+  font-weight: 700;
+  position: relative;
+}
+
+/* Check icon style effect */
+.why-row .highlight::before {
+  content: "✔";
+  color: #22c55e;
+  margin-right: 6px;
+}
+
+/* ===============================
+   HOVER EFFECTS
+================================ */
+
+.why-row:not(.head):hover {
+  background: #f8fbff;
+  transform: scale(1.01);
+  transition: all 0.25s ease;
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .why-table {
+    border-radius: 14px;
+  }
+
+  .why-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .why-row.head {
+    display: none;
+  }
+
+  .why-row div {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .why-row div::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 2px;
+  }
+
+  .why-row .highlight::before {
+    content: "✔ ";
+  }
+}

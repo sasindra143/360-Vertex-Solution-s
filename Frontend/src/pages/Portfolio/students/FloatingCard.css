@@ -1,0 +1,125 @@
+/* ===============================
+   BASE FLOATING CARD
+================================ */
+.floating-card {
+  width: 260px;
+  height: 160px;
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(168, 85, 247, 0.12),
+    rgba(15, 15, 30, 0.75)
+  );
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.75),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  padding: 16px;
+  position: absolute;
+  animation: float 12s ease-in-out infinite;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ===============================
+   FLOAT ANIMATION
+================================ */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+/* ===============================
+   HOVER EFFECT
+================================ */
+.floating-card:hover {
+  transform: translateY(-26px) scale(1.02);
+  box-shadow:
+    0 40px 120px rgba(168, 85, 247, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* ===============================
+   CARD HEADER (DOTS)
+================================ */
+.card-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.dot.purple {
+  background: #a855f7;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.8);
+}
+
+/* ===============================
+   CARD BODY (LINES)
+================================ */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.line {
+  height: 10px;
+  width: 100%;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    rgba(168, 85, 247, 0.45),
+    rgba(168, 85, 247, 0.15)
+  );
+  opacity: 0.8;
+}
+
+.line-lg {
+  width: 85%;
+}
+
+/* ===============================
+   POSITION VARIANTS (OPTIONAL)
+================================ */
+.card-top-left {
+  top: 12%;
+  left: 8%;
+}
+
+.card-bottom-left {
+  bottom: 14%;
+  left: 10%;
+  animation-delay: -4s;
+}
+
+.card-top-right {
+  top: 16%;
+  right: 10%;
+  animation-delay: -6s;
+}
+
+.card-bottom-right {
+  bottom: 12%;
+  right: 8%;
+  animation-delay: -2s;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .floating-card {
+    display: none;
+  }
+}

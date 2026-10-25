@@ -1,0 +1,170 @@
+/* ===============================
+   ADMIN ROOT
+================================ */
+.webdev-admin {
+  min-height: 100vh;
+  padding: 120px 20px 80px;
+  background: linear-gradient(180deg, #050505, #0b0b0b);
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===============================
+   TITLE
+================================ */
+.webdev-admin h1 {
+  text-align: center;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  margin-bottom: 50px;
+  color: #ffd700;
+  letter-spacing: 0.5px;
+}
+
+/* ===============================
+   FORM
+================================ */
+.admin-form {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  padding: 36px;
+  display: grid;
+  gap: 18px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+/* INPUTS */
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.admin-form input::placeholder,
+.admin-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* FOCUS */
+.admin-form input:focus,
+.admin-form textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.15);
+}
+
+/* SUBMIT */
+.admin-form button {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffd700, #ff9f00);
+  color: #000;
+  font-weight: 900;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.admin-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(255, 165, 0, 0.6);
+}
+
+/* ===============================
+   PROJECT LIST
+================================ */
+.admin-list {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  gap: 16px;
+}
+
+/* EMPTY */
+.admin-list .empty {
+  text-align: center;
+  color: #8f96b3;
+  font-size: 15px;
+}
+
+/* CARD */
+.admin-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+
+/* TEXT */
+.admin-card strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.admin-card span {
+  font-size: 13px;
+  color: #aab0c5;
+}
+
+/* DELETE */
+.admin-card button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.admin-card button:hover {
+  background: rgba(239, 68, 68, 0.25);
+  transform: scale(1.05);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .admin-form {
+    padding: 26px;
+  }
+
+  .admin-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-card button {
+    align-self: flex-end;
+  }
+}

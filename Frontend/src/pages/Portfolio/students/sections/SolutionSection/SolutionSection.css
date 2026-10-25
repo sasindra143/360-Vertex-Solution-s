@@ -1,0 +1,71 @@
+/* ===============================
+   SOLUTION SECTION – BASE
+================================ */
+
+.solution-section {
+  position: relative;
+  padding: 140px 80px 160px;
+  background: radial-gradient(
+      circle at top,
+      rgba(138, 43, 226, 0.15),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #05050d 0%, #020207 100%);
+  overflow: hidden;
+}
+
+/* Grid overlay */
+.solution-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.solution-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section spacing helpers */
+.solution-gap-lg {
+  margin-top: 120px;
+}
+
+.solution-gap-md {
+  margin-top: 80px;
+}
+
+/* Floating glow orbs */
+.solution-orb {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+  animation: orbFloat 12s ease-in-out infinite alternate;
+}
+
+.solution-orb.purple {
+  background: #8b5cf6;
+  top: -120px;
+  left: -120px;
+}
+
+.solution-orb.green {
+  background: #10b981;
+  bottom: -120px;
+  right: -120px;
+  animation-delay: 2s;
+}
+
+@keyframes orbFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-60px); }
+}

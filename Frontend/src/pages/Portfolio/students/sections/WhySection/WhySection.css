@@ -1,0 +1,144 @@
+.why-section {
+  padding: 120px 5%;
+  background: #05050d;
+  color: #fff;
+}
+
+.why-heading {
+  text-align: center;
+  font-size: 42px;
+  color: #a855f7;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.why-heading::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #a855f7, transparent);
+  display: block;
+  margin: 12px auto 0;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 32px;
+}
+
+.why-card {
+  background: linear-gradient(
+    145deg,
+    rgba(168, 85, 247, 0.08),
+    rgba(0, 0, 0, 0.9)
+  );
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(168, 85, 247, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-10px);
+  border-color: #a855f7;
+  box-shadow: 0 0 60px rgba(168, 85, 247, 0.35);
+}
+
+.why-card:hover::before {
+  opacity: 1;
+}
+
+.why-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.why-id {
+  font-size: 42px;
+  font-weight: 800;
+  color: rgba(168, 85, 247, 0.25);
+}
+
+.why-stat strong {
+  font-size: 26px;
+  color: #a855f7;
+}
+
+.why-stat small {
+  display: block;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.why-card h3 {
+  margin: 20px 0 10px;
+  font-size: 20px;
+}
+
+.why-card p {
+  color: #cbd5e1;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.why-tag {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+}
+
+.why-footer {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.why-footer p {
+  font-size: 28px;
+}
+
+.why-footer span {
+  color: #a855f7;
+  font-weight: 700;
+}
+
+.why-footer h4 {
+  margin-top: 14px;
+  font-size: 34px;
+  color: #ef4444;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .why-heading {
+    font-size: 32px;
+  }
+
+  .why-footer p {
+    font-size: 22px;
+  }
+
+  .why-footer h4 {
+    font-size: 26px;
+  }
+}

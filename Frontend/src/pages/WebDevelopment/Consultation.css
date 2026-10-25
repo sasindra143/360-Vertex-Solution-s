@@ -1,0 +1,79 @@
+.consultation-page {
+  min-height: 100vh;
+  background: #0b0f1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  position: relative;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: fixed;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #f5c400;
+  color: #0b0f1a;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 1000;
+}
+
+.back-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+  background: #e0b300;
+}
+
+.consultation-container {
+  max-width: 600px;
+  width: 100%;
+  background: #111629;
+  padding: 40px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.consultation-container h1 {
+  margin-bottom: 10px;
+}
+
+.consultation-container p {
+  color: #aab0c0;
+  margin-bottom: 30px;
+}
+
+.consultation-form .form-group {
+  margin-bottom: 20px;
+}
+
+.consultation-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.consultation-form input,
+.consultation-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: #0b0f1a;
+  color: #fff;
+}
+
+.consultation-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #8f96b3;
+}

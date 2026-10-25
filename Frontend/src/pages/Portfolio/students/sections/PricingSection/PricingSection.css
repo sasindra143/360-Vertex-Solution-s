@@ -1,0 +1,223 @@
+/* ================= SECTION ================= */
+.pricing-section {
+  padding: 140px 6% 160px;
+  background: radial-gradient(circle at top, #12001f, #05050d);
+  color: #fff;
+}
+
+/* ================= HEADER ================= */
+.pricing-header {
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.pricing-pill {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(180, 90, 255, 0.4);
+  color: #b45aff;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+}
+
+.pricing-title {
+  font-size: 46px;
+  margin-bottom: 14px;
+}
+
+.pricing-title span {
+  color: #b45aff;
+}
+
+.pricing-subtitle {
+  color: #aaa;
+  font-size: 15px;
+}
+
+/* ================= GRID ================= */
+.pricing-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ================= CARD ================= */
+.pricing-card {
+  background: linear-gradient(180deg, #0b0b14, #05050d);
+  border-radius: 24px;
+  padding: 36px 30px;
+  border: 1px solid rgba(180, 90, 255, 0.15);
+  transition: all 0.45s ease;
+  position: relative;
+}
+
+.pricing-card:hover {
+  transform: translateY(-14px);
+  border-color: #b45aff;
+  box-shadow: 0 0 55px rgba(180, 90, 255, 0.35);
+}
+
+/* POPULAR */
+.pricing-card.popular {
+  border-color: #b45aff;
+  box-shadow: 0 0 65px rgba(180, 90, 255, 0.45);
+}
+
+.most-popular {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ================= CONTENT ================= */
+.pricing-tag {
+  font-size: 11px;
+  color: #b45aff;
+  letter-spacing: 1px;
+}
+
+.pricing-card h3 {
+  font-size: 26px;
+  margin: 12px 0;
+}
+
+.pricing-desc {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.price {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.price span {
+  display: block;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 6px;
+}
+
+/* ================= LIST ================= */
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
+}
+
+.pricing-card li {
+  font-size: 13px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.pricing-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #b45aff;
+}
+
+/* ================= BUTTON ================= */
+.pricing-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(180, 90, 255, 0.45);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.pricing-btn:hover {
+  background: #b45aff;
+  box-shadow: 0 0 30px rgba(180, 90, 255, 0.9);
+}
+
+.pricing-btn.glow {
+  background: #b45aff;
+  box-shadow: 0 0 40px rgba(180, 90, 255, 1);
+}
+
+/* ================= DOT DIVIDER ================= */
+.pricing-dot-divider {
+  margin: 90px auto 50px;
+  text-align: center;
+}
+
+.pricing-dot-divider span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #b45aff;
+  box-shadow: 0 0 12px rgba(180, 90, 255, 0.9);
+}
+
+/* ================= CUSTOM CTA ================= */
+.custom-website-cta {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.custom-website-cta h3 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.custom-website-cta h3 span {
+  color: #b45aff;
+}
+
+.custom-website-cta p {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.custom-cta-btn {
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(180, 90, 255, 0.5);
+  color: #b45aff;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.custom-cta-btn:hover {
+  background: #b45aff;
+  color: #fff;
+  box-shadow: 0 0 32px rgba(180, 90, 255, 0.9);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .pricing-title {
+    font-size: 36px;
+  }
+}

@@ -1,0 +1,256 @@
+/* =========================
+   SECTION
+========================= */
+.cw-section {
+  padding: 120px 24px;
+  background: #050505;
+  color: #ffffff;
+}
+
+.cw-title {
+  text-align: center;
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 900;
+  margin-bottom: 70px;
+}
+
+.cw-title span {
+  color: #ffd700;
+}
+
+/* =========================
+   GRID
+========================= */
+.cw-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+/* =========================
+   CARD
+========================= */
+.cw-card {
+  background: linear-gradient(180deg, #0b1324, #070b16);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cw-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+}
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+.cw-image {
+  position: relative;
+  cursor: pointer;
+}
+
+.cw-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.cw-more {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: #ffd700;
+  color: #000;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+.cw-content {
+  padding: 26px;
+}
+
+.cw-content h3 {
+  font-size: 20px;
+  margin-bottom: 14px;
+  color: #00ffcc;
+}
+
+.cw-content ul {
+  padding-left: 18px;
+  margin-bottom: 22px;
+}
+
+.cw-content li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d1d5db;
+}
+
+/* =========================
+   CLIENT INFO
+========================= */
+.cw-client-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.cw-client-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffd700;
+}
+
+.cw-client-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.cw-client-review {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.5;
+  max-width: 220px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.cw-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.cw-rating {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cw-footer a {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffd700, #ff9f00);
+  color: #000;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cw-footer a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 170, 0, 0.6);
+}
+
+/* =========================
+   MODAL
+========================= */
+.cw-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.cw-modal-img,
+.cw-modal-video {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 18px;
+}
+
+.cw-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-size: 34px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* =========================
+   MODAL NAV
+========================= */
+.cw-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  font-size: 42px;
+  color: #fff;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cw-nav.left {
+  left: 30px;
+}
+
+.cw-nav.right {
+  right: 30px;
+}
+
+/* =========================
+   MODAL ACTIONS
+========================= */
+.cw-modal-actions {
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  gap: 16px;
+}
+
+.cw-modal-actions a {
+  background: linear-gradient(135deg, #ffd700, #ff9f00);
+  color: #000;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .cw-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cw-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cw-image img {
+    height: 200px;
+  }
+
+  .cw-modal-actions {
+    flex-direction: column;
+  }
+}
