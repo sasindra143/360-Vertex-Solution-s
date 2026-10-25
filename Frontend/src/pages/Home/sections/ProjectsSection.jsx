@@ -5,14 +5,14 @@ const projectCards = [
   {
     title: "PR Skillverse",
     type: "Business Website",
-    description: "A training website that helps learners explore SAP courses and career support.",
+    description: "A responsive SAP training website featuring courses and programs, with an admin dashboard for managing recorded classes.",
     image: "/client-projects/pr-skillverse.jpg",
     website: "https://prskillverse.com/",
   },
   {
     title: "Vaakya Creations",
     type: "Online Store",
-    description: "An online storefront for handcrafted sarees, fashion and accessories.",
+    description: "A responsive women’s fashion store built with React and Node.js, featuring collections, product details, and interactive shopping.",
     image: "/client-projects/vaakya-creations.jpg",
     website: "https://vaakya-creations.netlify.app/",
   },
@@ -26,7 +26,7 @@ const projectCards = [
   {
     title: "Ration Shop Management CRM",
     type: "CRM & Management App",
-    description: "A web app for managing ration cards, stock, distribution and shop records.",
+    description: "A digital ration shop platform for managing beneficiary records, stock, commodity distribution, and transactions.",
     image: "/client-projects/ration-shop-management.jpg",
     website: "https://ration-shop-management-sys-sunkesula.netlify.app/",
   },

@@ -6,7 +6,7 @@ const projects = [
   {
     name: "Vaakya Creations",
     category: "Fashion e-commerce",
-    description: "An online storefront for handcrafted sarees, fashion and accessories.",
+    description: "A responsive women’s fashion store with product collections and interactive shopping features.",
     image: "/client-projects/vaakya-creations.jpg",
     imageAlt: "Screenshot of the Vaakya Creations online fashion store",
     url: "https://vaakya-creations.netlify.app/",
@@ -22,7 +22,7 @@ const projects = [
   {
     name: "Ration Shop Management",
     category: "Management web app",
-    description: "A digital system for managing ration cards, distribution, stock and reports.",
+    description: "A digital platform for ration card records, stock monitoring, commodity distribution, and transactions.",
     image: "/client-projects/ration-shop-management.jpg",
     imageAlt: "Screenshot of the Ration Shop Management web app",
     url: "https://ration-shop-management-sys-sunkesula.netlify.app/",
@@ -30,7 +30,7 @@ const projects = [
   {
     name: "PR Skillverse",
     category: "Training & education",
-    description: "A training website helping learners discover SAP courses and career support.",
+    description: "A responsive SAP training website featuring courses and an admin dashboard for recorded classes.",
     image: "/client-projects/pr-skillverse.jpg",
     imageAlt: "Screenshot of the PR Skillverse training website",
     url: "https://prskillverse.com/",
