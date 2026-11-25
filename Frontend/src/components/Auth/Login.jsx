@@ -191,12 +191,6 @@ export default function Login() {
             </button>
           </form>
 
-          <div className="auth-footer-nav">
-            Don't have an account?{" "}
-            <Link to="/signup" className="auth-link">
-              Create Account
-            </Link>
-          </div>
         </div>
       </div>
     </div>

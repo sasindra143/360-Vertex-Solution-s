@@ -1,12 +1,7 @@
-import { useState } from "react";
-import RegisterForm from "./RegisterForm";
+import { Link } from "react-router-dom";
 import "./ScheduleCall.css";
 
 export default function ScheduleCall() {
-  const [showRegister, setShowRegister] = useState(false);
-
-  if (showRegister) return <RegisterForm />;
-
   return (
     <section className="schedule">
       <div className="schedule-left">
@@ -30,12 +25,7 @@ export default function ScheduleCall() {
           ))}
         </div>
 
-        <button
-          className="continue-btn"
-          onClick={() => setShowRegister(true)}
-        >
-          Continue →
-        </button>
+        <Link className="continue-btn" to="/contact">Request a discovery call →</Link>
       </div>
     </section>
   );

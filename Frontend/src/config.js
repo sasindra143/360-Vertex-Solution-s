@@ -5,8 +5,8 @@
 
 export const COMPANY = {
   name: "360° Vertex Solutions",
-  tagline: "Your Vision. Your Skills. Your Future.",
-  positioning: "One brand. Two pathways. Complete digital solutions.",
+  tagline: "Your Skills. Your Career. Your Future. All in 360°.",
+  positioning: "An all-in-one platform providing educational resources, career development services, technology solutions, and project support for students and job seekers.",
   phone: "+91 9959732476",
   phoneRaw: "919959732476",
   whatsappPhone: "+91 8074286041",

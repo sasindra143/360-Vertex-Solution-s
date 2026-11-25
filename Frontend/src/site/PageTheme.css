@@ -1,0 +1,563 @@
+.vx-site-shell {
+  --cj-text: #171717;
+  --cj-muted: #686868;
+  --cj-border: #deddd9;
+  --cj-card: rgba(255, 255, 255, 0.94);
+  --cj-card-soft: #f5f4f1;
+  --cj-glass: rgba(255, 255, 255, 0.88);
+  --cj-input: #ffffff;
+  --cj-section: #efeeeb;
+}
+
+.vx-site-shell .vertex-blog {
+  color: #171717;
+  background: transparent;
+}
+
+.vx-site-shell .vertex-blog__eyebrow,
+.vx-site-shell .vertex-blog-card__category,
+.vx-site-shell .vertex-blog-card a,
+.vx-site-shell .vertex-blog__cta a {
+  color: #635bcb;
+}
+
+.vx-site-shell .vertex-blog__hero h1,
+.vx-site-shell .vertex-blog-card h2,
+.vx-site-shell .vertex-blog__cta h2 {
+  color: #171717;
+}
+
+.vx-site-shell .vertex-blog__hero p,
+.vx-site-shell .vertex-blog-card > p,
+.vx-site-shell .vertex-blog-card ul,
+.vx-site-shell .vertex-blog__cta p {
+  color: #686868;
+}
+
+.vx-site-shell .vertex-blog-card {
+  border-color: #deddd9;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 32px rgba(23, 23, 23, 0.045);
+}
+
+.vx-site-shell .vertex-blog-card li::marker {
+  color: #635bcb;
+}
+
+.vx-site-shell .vertex-blog__cta {
+  border-color: rgba(99, 91, 203, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.vx-site-shell .vertex-blog__cta a:hover {
+  color: #39217d;
+}
+
+.vx-site-shell .cj-page,
+.vx-site-shell .cjp-page {
+  color: #171717;
+  background: transparent;
+}
+
+.vx-site-shell .cj-hero {
+  color: #171717;
+  background: #f5f4f1;
+}
+
+.vx-site-shell .cj-eyebrow,
+.vx-site-shell .cj-reset-button,
+.vx-site-shell .cj-back-link,
+.vx-site-shell .cj-source-link,
+.vx-site-shell .cj-detail-tags,
+.vx-site-shell .cj-detail-facts > div {
+  color: #635bcb;
+}
+
+.vx-site-shell .cj-hero h1,
+.vx-site-shell .cj-section-heading h2,
+.vx-site-shell .cj-final-cta h2,
+.vx-site-shell .cj-detail-heading h1,
+.vx-site-shell .cj-detail-content h2,
+.vx-site-shell .cj-resource-card h3 {
+  color: #171717;
+}
+
+.vx-site-shell .cj-hero__content > p,
+.vx-site-shell .cj-hero__trust {
+  color: #686868;
+}
+
+.vx-site-shell .cj-hero h1 span {
+  background: linear-gradient(100deg, #635bcb, #4263eb);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.vx-site-shell .cj-hero__glow--blue {
+  background: rgba(99, 91, 203, 0.12);
+}
+
+.vx-site-shell .cj-hero__glow--violet {
+  background: rgba(66, 99, 235, 0.1);
+}
+
+.vx-site-shell .cj-final-cta {
+  color: #171717;
+  border-top-color: #deddd9;
+  background: #efeeeb;
+}
+
+.vx-site-shell .cj-final-cta p {
+  color: #686868;
+}
+
+.vx-site-shell .cj-final-cta .cj-button--secondary {
+  border-color: #c9c7d0;
+  color: #635bcb;
+  background: #ffffff;
+}
+
+.vx-site-shell .public-prompts {
+  color: #171717;
+  background: transparent;
+}
+
+.vx-site-shell .public-prompts__hero {
+  border-bottom-color: #deddd9;
+  background: rgba(245, 244, 241, 0.76);
+}
+
+.vx-site-shell .public-prompts__eyebrow,
+.vx-site-shell .public-prompts__back,
+.vx-site-shell .public-prompts__attachments li a {
+  color: #635bcb;
+}
+
+.vx-site-shell .public-prompts__hero h1,
+.vx-site-shell .public-prompts__listing-heading h2,
+.vx-site-shell .public-prompts__card h2,
+.vx-site-shell .public-prompts__detail-card h1,
+.vx-site-shell .public-prompts__tools h2,
+.vx-site-shell .public-prompts__examples h2,
+.vx-site-shell .public-prompts__attachments h2,
+.vx-site-shell .public-prompts__full-prompt h2,
+.vx-site-shell .public-prompts__state h2 {
+  color: #171717;
+}
+
+.vx-site-shell .public-prompts__hero h1 span {
+  color: #635bcb;
+}
+
+.vx-site-shell .public-prompts__hero p,
+.vx-site-shell .public-prompts__listing-heading > span,
+.vx-site-shell .public-prompts__card-content > p,
+.vx-site-shell .public-prompts__description,
+.vx-site-shell .public-prompts__identity > span,
+.vx-site-shell .public-prompts__provider-note,
+.vx-site-shell .public-prompts__state,
+.vx-site-shell .public-prompts__pagination {
+  color: #686868;
+}
+
+.vx-site-shell .public-prompts__search,
+.vx-site-shell .public-prompts__card,
+.vx-site-shell .public-prompts__detail-card {
+  border-color: #deddd9;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 32px rgba(23, 23, 23, 0.045);
+}
+
+.vx-site-shell .public-prompts__search svg,
+.vx-site-shell .public-prompts__card-footer a,
+.vx-site-shell .public-prompts__card h2 a:hover {
+  color: #635bcb;
+}
+
+.vx-site-shell .public-prompts__search input,
+.vx-site-shell .public-prompts__search select {
+  color: #171717;
+}
+
+.vx-site-shell .public-prompts__search input::placeholder {
+  color: #777777;
+}
+
+.vx-site-shell .public-prompts__search option {
+  color: #171717;
+  background: #ffffff;
+}
+
+.vx-site-shell .public-prompts__meta span {
+  border-color: #e2def4;
+  color: #5149a9;
+  background: #f6f3ff;
+}
+
+.vx-site-shell .public-prompts__tags span {
+  color: #4a4a4a;
+  background: #f2f1ef;
+}
+
+.vx-site-shell .public-prompts__card-footer {
+  border-top-color: #e6e4e1;
+}
+
+.vx-site-shell .public-prompts__state--error {
+  color: #b42318;
+}
+
+.vx-site-shell .public-prompts__state button,
+.vx-site-shell .public-prompts__pagination button {
+  border-color: #deddd9;
+  color: #5149a9;
+  background: #ffffff;
+}
+
+.vx-site-shell .public-prompts__detail-cover,
+.vx-site-shell .public-prompts__examples img {
+  background: #f5f4f1;
+}
+
+.vx-site-shell .public-prompts__identity {
+  border-color: #deddd9;
+  background: #f7f6f3;
+}
+
+.vx-site-shell .public-prompts__button--quiet {
+  border-color: #deddd9;
+  color: #5149a9;
+  background: #ffffff;
+}
+
+.vx-site-shell .public-prompts__full-prompt pre {
+  border-color: #deddd9;
+  color: #292929;
+  background: #f5f4f1;
+}
+
+.vx-site-shell .public-prompts__attachments video {
+  background: #f5f4f1;
+}
+
+.vx-site-shell .vx-about-page .vx-page-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(82px, 11vw, 130px);
+  border-bottom-color: #e2e0dc;
+  background: linear-gradient(112deg, #f5f4f1 0%, #f1f0ed 62%, #efedfa 100%);
+}
+
+.vx-site-shell .vx-about-page .vx-page-intro::after {
+  position: absolute;
+  z-index: 0;
+  right: max(24px, calc((100vw - 1180px) / 2));
+  bottom: -0.28em;
+  color: rgba(99, 91, 203, 0.045);
+  content: "360°";
+  font-size: clamp(150px, 23vw, 300px);
+  font-weight: 800;
+  letter-spacing: -0.1em;
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.vx-site-shell .vx-about-page .vx-page-intro .vx-container {
+  position: relative;
+  z-index: 1;
+}
+
+.vx-site-shell .vx-about-page .vx-page-intro h1 {
+  max-width: 860px;
+  color: #171717;
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 620;
+  letter-spacing: -0.065em;
+  line-height: 1.03;
+}
+
+.vx-site-shell .vx-about-page .vx-page-intro p {
+  max-width: 640px;
+  color: #686868;
+  font-size: clamp(14px, 1.5vw, 17px);
+  line-height: 1.8;
+}
+
+.vx-site-shell .vx-about-page > .vx-section {
+  padding-block: clamp(58px, 8vw, 96px);
+}
+
+.vx-site-shell .vx-about-grid {
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(40px, 7vw, 92px);
+}
+
+.vx-site-shell .vx-about-grid > div:first-child > p {
+  max-width: 620px;
+  margin-bottom: 18px;
+  color: #686868;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.vx-site-shell .vx-about-card {
+  position: relative;
+  min-height: 390px;
+  padding: clamp(30px, 5vw, 54px);
+  overflow: hidden;
+  border: 1px solid #e1dff0;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(99, 91, 203, 0.12), transparent 38%),
+    linear-gradient(145deg, #ffffff, #f7f6fc);
+  box-shadow: 0 26px 65px rgba(37, 39, 73, 0.09);
+}
+
+.vx-site-shell .vx-about-card::before,
+.vx-site-shell .vx-about-card::after {
+  position: absolute;
+  right: -78px;
+  bottom: -110px;
+  width: 290px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(99, 91, 203, 0.13);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.vx-site-shell .vx-about-card::after {
+  right: -42px;
+  bottom: -74px;
+  width: 218px;
+  border-color: rgba(66, 99, 235, 0.15);
+}
+
+.vx-site-shell .vx-about-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.vx-site-shell .vx-about-card > span {
+  display: grid;
+  width: 70px;
+  height: 70px;
+  place-items: center;
+  border-radius: 20px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #635bcb, #4263eb);
+  box-shadow: 0 12px 28px rgba(99, 91, 203, 0.24);
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.vx-site-shell .vx-about-card h3 {
+  margin: 24px 0 12px;
+  color: #171717;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 620;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+}
+
+.vx-site-shell .vx-about-card p {
+  color: #686868;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.vx-site-shell .vx-about-page .vx-founder-link {
+  color: #635bcb;
+}
+
+.vx-site-shell .vx-about-page .vx-founder-link:hover {
+  color: #39217d;
+}
+
+.vx-site-shell .vx-about-page .vx-value-grid {
+  gap: 16px;
+}
+
+.vx-site-shell .vx-about-page .vx-value-grid article {
+  min-height: 190px;
+  padding: 24px;
+  border: 1px solid #e2e0e8;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 28px rgba(23, 23, 23, 0.04);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.vx-site-shell .vx-about-page .vx-value-grid article:hover {
+  transform: translateY(-4px);
+  border-color: #cec9e8;
+  box-shadow: 0 16px 35px rgba(37, 39, 73, 0.09);
+}
+
+.vx-site-shell .vx-about-page .vx-value-grid article > span {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #635bcb, #4263eb);
+}
+
+.vx-site-shell .vx-about-page .vx-value-grid h3 {
+  margin-top: 18px;
+  color: #171717;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.vx-site-shell .vx-about-page .vx-value-grid p {
+  color: #686868;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@media (max-width: 820px) {
+  .vx-site-shell .vx-about-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vx-site-shell .vx-about-card {
+    min-height: 330px;
+  }
+
+  .vx-site-shell .vx-about-page .vx-value-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .vx-site-shell .vx-about-page .vx-page-intro {
+    padding-block: 70px;
+  }
+
+  .vx-site-shell .vx-about-page .vx-page-intro::after {
+    right: 12px;
+    bottom: -0.2em;
+    font-size: 140px;
+  }
+
+  .vx-site-shell .vx-about-page .vx-value-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vx-site-shell .vx-about-page .vx-value-grid article {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vx-site-shell .vx-about-page .vx-value-grid article {
+    transition: none;
+  }
+}
+
+.vx-site-shell .vx-faq-page {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px;
+}
+
+.vx-site-shell .vx-faq-group {
+  min-width: 0;
+  padding: clamp(18px, 2.4vw, 28px);
+  border: 1px solid #e3e1e9;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 32px rgba(23, 23, 23, 0.045);
+}
+
+.vx-site-shell .vx-faq-group > h2 {
+  margin: 0 0 18px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9e7ee;
+  color: #171717;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.vx-site-shell .vx-faq-list {
+  display: grid;
+  gap: 10px;
+  border: 0;
+}
+
+.vx-site-shell .vx-faq {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e6e4eb;
+  border-radius: 12px;
+  background: #ffffff;
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.vx-site-shell .vx-faq:hover {
+  border-color: #c9c4e7;
+}
+
+.vx-site-shell .vx-faq.is-open {
+  border-color: rgba(99, 91, 203, 0.38);
+  background: #fcfbff;
+  box-shadow: 0 8px 22px rgba(99, 91, 203, 0.07);
+}
+
+.vx-site-shell .vx-faq > button {
+  min-height: 62px;
+  padding: 14px 15px;
+  color: #202020;
+  font-size: 13px;
+  font-weight: 620;
+  line-height: 1.55;
+}
+
+.vx-site-shell .vx-faq > button span:first-child {
+  min-width: 0;
+}
+
+.vx-site-shell .vx-faq > button span:last-child {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border-radius: 50%;
+  color: #635bcb;
+  background: #f2f0fb;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.vx-site-shell .vx-faq.is-open > button span:last-child {
+  color: #ffffff;
+  background: #635bcb;
+}
+
+.vx-site-shell .vx-faq > p {
+  max-width: none;
+  margin: 0;
+  padding: 0 15px 17px;
+  color: #686868;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+@media (max-width: 820px) {
+  .vx-site-shell .vx-faq-page {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vx-site-shell .vx-faq {
+    transition: none;
+  }
+}

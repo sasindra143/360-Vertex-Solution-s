@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaInstagram, FaLinkedinIn, FaTelegramPlane, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { COMPANY, SOCIAL, waLink } from "../../config";
 import "./Footer.css";
@@ -9,10 +9,11 @@ const FCOLS = [
     links: [
       { l: "Home", p: "/" },
       { l: "About Us", p: "/about" },
-      { l: "Digital Marketing", p: "/digital-marketing" },
-      { l: "Technology", p: "/technology" },
+      { l: "Services", p: "/services" },
+      { l: "Our Work", p: "/work" },
+      { l: "Blog", p: "/blog" },
       { l: "Career & Jobs", p: "/career-jobs" },
-      { l: "Testimonials", p: "/testimonials" },
+      { l: "FAQ", p: "/faq" },
       { l: "Contact", p: "/contact" },
     ],
   },
@@ -125,7 +126,11 @@ export default function Footer() {
               <ul>
                 {col.links.map((l, j) => (
                   <li key={j}>
-                    <button onClick={() => nav(l.p)}>{l.l}</button>
+                    {col.h === "Quick Links" ? (
+                      <Link className="vx-footer__link" to={l.p}>{l.l}</Link>
+                    ) : (
+                      <button onClick={() => nav(l.p)}>{l.l}</button>
+                    )}
                   </li>
                 ))}
               </ul>

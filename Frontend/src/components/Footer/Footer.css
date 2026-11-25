@@ -156,6 +156,26 @@
   padding: 0;
 }
 
+.vx-footer__link {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(170, 190, 230, 0.5);
+  text-align: left;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.vx-footer__link:hover,
+.vx-footer__link:focus-visible {
+  color: #fff;
+}
+
+.vx-footer__link:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 3px;
+}
+
 .vx-footer__col button:hover { color: #fff; }
 
 /* BOTTOM */

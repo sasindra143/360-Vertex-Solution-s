@@ -5,6 +5,7 @@ const {
   AI_TOOLS,
   DIFFICULTIES,
   UPLOAD_LIMITS,
+  buildPromptsSitemap,
   createPromptsRouters,
   formatPromptId,
   parseByteRange,
@@ -33,6 +34,15 @@ test("prompt vocabularies include common AI tools and difficulty levels", () => 
 test("prompt IDs use the required six-digit backend format", () => {
   assert.equal(formatPromptId(1), "VTX-PMT-000001");
   assert.equal(formatPromptId(125), "VTX-PMT-000125");
+});
+
+test("prompt sitemap includes published prompt URLs with last-modified dates", () => {
+  const sitemap = buildPromptsSitemap("https://www.360vertexsolutions.com", [
+    { promptId: "VTX-PMT-000001", updatedAt: "2026-11-24T08:00:00.000Z" },
+  ]);
+  assert.match(sitemap, /<loc>https:\/\/www\.360vertexsolutions\.com\/prompts\/VTX-PMT-000001<\/loc>/);
+  assert.match(sitemap, /<lastmod>2026-11-24<\/lastmod>/);
+  assert.match(sitemap, /<\/urlset>$/);
 });
 
 test("prompt upload limits accept the advertised image, video, and PDF sizes", () => {

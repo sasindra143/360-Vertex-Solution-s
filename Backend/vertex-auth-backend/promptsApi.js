@@ -361,6 +361,26 @@ function makeFilter(params, admin) {
   return filter;
 }
 
+function escapeXml(value) {
+  return String(value).replace(/[<>&'"]/g, (character) => ({
+    "<": "&lt;",
+    ">": "&gt;",
+    "&": "&amp;",
+    "'": "&apos;",
+    '"': "&quot;",
+  })[character]);
+}
+
+function buildPromptsSitemap(origin, prompts) {
+  const urls = prompts.map((prompt) => {
+    const loc = escapeXml(`${origin}/prompts/${encodeURIComponent(prompt.promptId)}`);
+    const lastmodValue = prompt.updatedAt || prompt.publishedAt;
+    const lastmod = lastmodValue ? `<lastmod>${new Date(lastmodValue).toISOString().slice(0, 10)}</lastmod>` : "";
+    return `<url><loc>${loc}</loc>${lastmod}</url>`;
+  });
+  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>`;
+}
+
 function createPromptsRouters({ getSessionFromRequest, rejectUnexpectedOrigin }) {
   const publicRouter = express.Router();
   const adminRouter = express.Router();
@@ -434,6 +454,23 @@ function createPromptsRouters({ getSessionFromRequest, rejectUnexpectedOrigin })
       res.json({ items: items.map((item) => serializePrompt(item)), page: params.page, pages: Math.ceil(total / params.limit), total });
     } catch (error) {
       if (error instanceof PromptInputError) return res.status(400).json({ message: error.message });
+      next(error);
+    }
+  });
+
+  publicRouter.get("/sitemap.xml", requireDatabase, async (_req, res, next) => {
+    try {
+      const prompts = await getPromptModel().find({ status: "published" })
+        .select("promptId updatedAt publishedAt")
+        .sort({ publishedAt: -1 })
+        .lean();
+      const configuredSiteUrl = process.env.PUBLIC_SITE_URL || "https://www.360vertexsolutions.com";
+      const siteUrl = new URL(configuredSiteUrl);
+      if (siteUrl.protocol !== "https:" || siteUrl.username || siteUrl.password) {
+        throw new Error("PUBLIC_SITE_URL must be a public HTTPS origin.");
+      }
+      res.type("application/xml").send(buildPromptsSitemap(siteUrl.origin, prompts));
+    } catch (error) {
       next(error);
     }
   });
@@ -701,4 +738,4 @@ function createPromptsRouters({ getSessionFromRequest, rejectUnexpectedOrigin })
   return { publicRouter, adminRouter };
 }
 
-module.exports = { AI_TOOLS, DIFFICULTIES, PromptInputError, UPLOAD_LIMITS, createPromptsRouters, formatPromptId, generatePromptId, parseByteRange, parsePromptInput, slugify };
+module.exports = { AI_TOOLS, DIFFICULTIES, PromptInputError, UPLOAD_LIMITS, buildPromptsSitemap, createPromptsRouters, formatPromptId, generatePromptId, parseByteRange, parsePromptInput, slugify };

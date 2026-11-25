@@ -1,11 +1,19 @@
 :root {
-  color-scheme: dark;
-  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+  font-family: Inter, "Plus Jakarta Sans", Manrope, "Segoe UI", Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --site-bg: #080b16;
-  --site-text: #f8fafc;
-  --site-muted: #a7b0c0;
+  /* 360° Vertex Solutions — light violet/blue premium palette */
+  --site-bg: #ffffff;
+  --site-text: #11142b;
+  --site-muted: #5a6178;
+  --brand-violet: #7139d8;
+  --brand-purple: #39217d;
+  --brand-blue: #4263eb;
+  --brand-violet-soft: #eee7ff;
+  --brand-yellow: #dfff00;
+  --brand-green: #b8f28b;
+  --brand-navy: #11142b;
 }
 
 * {
@@ -20,7 +28,7 @@ body {
   overflow-x: clip;
   background: var(--site-bg);
   color: var(--site-text);
-  font-family: var(--font-main, Inter, "Segoe UI", Arial, sans-serif);
+  font-family: var(--font-main, Inter, "Plus Jakarta Sans", Manrope, "Segoe UI", Arial, sans-serif);
   scroll-behavior: smooth;
 }
 
@@ -40,7 +48,7 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 a {
@@ -53,8 +61,8 @@ button {
 }
 
 ::selection {
-  color: #fff;
-  background: rgba(59, 130, 246, 0.55);
+  color: #ffffff;
+  background: rgba(113, 57, 216, 0.85);
 }
 
 @media (prefers-reduced-motion: reduce) {

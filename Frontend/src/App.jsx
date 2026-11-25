@@ -1,40 +1,37 @@
-import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, Outlet, Navigate, useLocation } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute, UnauthenticatedOnlyRoute } from "./components/Auth/ProtectedRoute";
 
 /* GLOBAL */
 import Header from "./components/Header/Header";
-import SiteEngagementPrompt from "./components/SiteEngagementPrompt";
 
 import {
   AboutPage as VertexAboutPage,
   BusinessPage,
+  CareerHubPage,
   ContactPage as VertexContactPage,
+  FaqPage,
   FounderPage as VertexFounderPage,
   HomePage as VertexHomePage,
   LegalPage,
+  NotFoundPage,
   PageMeta,
   ProjectPreviewPage,
   ServicePage,
   ServicesPage as VertexServicesPage,
   SiteLayout,
-  StudentsPage as VertexStudentsPage,
   WorkPage,
 } from "./site/VertexSite";
 
 /* AUTH & PROFILE COMPONENTS */
 import Login from "./components/Auth/Login";
-import Signup from "./components/Auth/Signup";
 import ForgotPassword from "./components/Auth/ForgotPassword";
 import ResetPassword from "./components/Auth/ResetPassword";
 import VerifyEmail from "./components/Auth/VerifyEmail";
 import Profile from "./components/Profile/Profile";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Settings from "./pages/Settings/Settings";
-
-/* PORTFOLIO */
-import StudentsPage from "./pages/Portfolio/students/StudentsPage";
-import ProfileSection from "./pages/Portfolio/students/sections/ProfileSection/ProfileSection";
 
 /* ADMIN */
 import WebDevAdmin from "./pages/Admin/WebDevAdmin";
@@ -44,7 +41,6 @@ import AdminNoteEditor from "./pages/Admin/AdminNoteEditor";
 import AdminJobs from "./pages/Admin/AdminJobs";
 import AdminPrompts, { PromptEditor } from "./pages/Admin/AdminPrompts";
 import PromptsPage from "./pages/Prompts/PromptsPage";
-import StudentNotesPage from "./pages/StudentNotes/StudentNotesPage";
 
 /* ================= LAYOUTS ================= */
 
@@ -55,10 +51,6 @@ function HomeLayout() {
       <Outlet />
     </SiteLayout>
   );
-}
-
-function StudentsLayout() {
-  return <Outlet />;
 }
 
 function AuthLayout() {
@@ -74,24 +66,38 @@ function AdminLayout() {
   );
 }
 
+function RouteScrollManager() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (target) {
+        target.scrollIntoView();
+      } else {
+        window.scrollTo(0, 0);
+      }
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, hash]);
+
+  return null;
+}
+
 /* ================= PAGES ================= */
 
 function HomePage() {
   return <VertexHomePage />;
 }
 
-function NotFound() {
-  return (
-    <div style={{ padding: "120px", textAlign: "center" }}>
-      <h1>404</h1>
-      <p>Page not found</p>
-    </div>
-  );
-}
-
 /* NEW PAGES */
 import CareerJobsPage from "./pages/CareerJobs/CareerJobsPage";
-import TestimonialsPage from "./pages/Testimonials/TestimonialsPage";
 import BlogPage from "./pages/Blog/BlogPage";
 
 /* ================= ROUTES ================= */
@@ -100,6 +106,7 @@ export default function App() {
   return (
     <AuthProvider>
       <>
+      <RouteScrollManager />
       <Routes>
 
         {/* MAIN WEBSITE */}
@@ -109,13 +116,11 @@ export default function App() {
           <Route path="/about" element={<VertexAboutPage />} />
           <Route path="/business/*" element={<BusinessPage />} />
           <Route path="/business/:serviceSlug" element={<ServicePage />} />
-          <Route path="/students" element={<VertexStudentsPage />} />
-          <Route path="/students/:serviceSlug" element={<ServicePage />} />
           <Route path="/work" element={<WorkPage />} />
           <Route path="/work/:projectSlug" element={<ProjectPreviewPage />} />
           <Route path="/privacy-policy" element={<LegalPage />} />
           <Route path="/terms" element={<LegalPage />} />
-          <Route path="/portfolio-creation" element={<Navigate to="/students/portfolio-websites" replace />} />
+          <Route path="/portfolio-creation" element={<Navigate to="/work" replace />} />
           <Route path="/founder" element={<VertexFounderPage />} />
           
           {/* New Pages */}
@@ -123,17 +128,23 @@ export default function App() {
           <Route path="/academy" element={<Navigate to="/" replace />} />
           <Route path="/digital-marketing/*" element={<Navigate to="/services#business-services" replace />} />
           <Route path="/technology" element={<Navigate to="/services" replace />} />
-          <Route path="/students/notes/:noteSlug?" element={<StudentNotesPage />} />
+          <Route path="/students" element={<Navigate to="/services" replace />} />
+          <Route path="/students/*" element={<Navigate to="/services" replace />} />
           
           <Route path="/technology/web-development/*" element={<Navigate to="/services#business-services" replace />} />
 
           <Route path="/career-jobs" element={<CareerJobsPage />} />
           <Route path="/career-jobs/:jobSlug" element={<CareerJobsPage />} />
+          <Route path="/career-hub" element={<CareerHubPage />} />
+          <Route path="/resources" element={<Navigate to="/career-hub" replace />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="/prompts" element={<PromptsPage />} />
           <Route path="/prompts/:promptId" element={<PromptsPage />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
+
+          {/* CUSTOM 404 */}
+          <Route path="*" element={<NotFoundPage />} />
 
           {/* PROTECTED CUSTOMER ROUTES */}
           <Route element={<ProtectedRoute />}>
@@ -146,23 +157,17 @@ export default function App() {
           </Route>
         </Route>
 
-        {/* STUDENTS PORTFOLIO */}
-        <Route element={<StudentsLayout />}>
-          <Route path="/portfolio/students" element={<StudentsPage />} />
-          <Route
-            path="/portfolio/students/profile"
-            element={<ProfileSection />}
-          />
-        </Route>
+        <Route path="/portfolio/students" element={<Navigate to="/work" replace />} />
+        <Route path="/portfolio/students/*" element={<Navigate to="/work" replace />} />
 
         <Route path="/web-development" element={<Navigate to="/business/website-development" replace />} />
         <Route path="/consultation" element={<Navigate to="/contact" replace />} />
         <Route path="/client-work" element={<Navigate to="/work" replace />} />
 
         {/* AUTH (UNAUTHENTICATED ONLY) */}
+        <Route path="/signup" element={<Navigate to="/login" replace />} />
         <Route element={<UnauthenticatedOnlyRoute />}>
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Route>
@@ -182,11 +187,9 @@ export default function App() {
           </Route>
         </Route>
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
+        {/* 404 handled inside HomeLayout */}
 
       </Routes>
-      <SiteEngagementPrompt />
       </>
     </AuthProvider>
   );

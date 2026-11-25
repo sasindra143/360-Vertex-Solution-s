@@ -6,4 +6,7 @@
   <sitemap>
     <loc>https://www.360vertexsolutions.com/api/jobs/sitemap.xml</loc>
   </sitemap>
+  <sitemap>
+    <loc>https://www.360vertexsolutions.com/api/prompts/sitemap.xml</loc>
+  </sitemap>
 </sitemapindex>

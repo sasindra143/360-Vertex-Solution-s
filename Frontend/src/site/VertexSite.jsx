@@ -1,28 +1,35 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import {
   ArrowDownRight,
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
+  BarChart3,
   Check,
   Code2,
-  FileText,
+  Globe,
   GraduationCap,
-  Linkedin,
+  Headphones,
+  Mail,
+  Megaphone,
   Menu,
   MessageCircle,
   Monitor,
+  MousePointerClick,
   Palette,
+  Rocket,
   Search,
+  Send,
+  ShoppingCart,
   ShieldCheck,
   Sparkles,
-  MessageSquareText,
   X,
 } from "lucide-react";
 import { COMPANY, SOCIAL, waLink } from "../config";
+import IntroAnimation from "../components/IntroAnimation";
 import "./VertexSite.css";
+import "./PageTheme.css";
 
 const businessServices = [
   {
@@ -34,13 +41,13 @@ const businessServices = [
   {
     title: "E-commerce",
     copy: "Online storefronts designed to make browsing products and getting in touch simple.",
-    icon: Code2,
+    icon: ShoppingCart,
     href: "/business/ecommerce-development",
   },
   {
     title: "Landing pages",
     copy: "Focused pages for a product, campaign, event, or specific business goal.",
-    icon: ArrowUpRight,
+    icon: Monitor,
     href: "/business/landing-pages",
   },
   {
@@ -52,7 +59,7 @@ const businessServices = [
   {
     title: "Digital marketing",
     copy: "A practical mix of paid campaigns, social, content, and measurement.",
-    icon: Sparkles,
+    icon: Megaphone,
     href: "/business/digital-marketing",
   },
   {
@@ -70,92 +77,20 @@ const businessServices = [
   {
     title: "Google Ads",
     copy: "Plan paid search campaigns around your audience, offer, and budget.",
-    icon: Search,
+    icon: MousePointerClick,
     href: "/business/google-ads",
   },
   {
     title: "Meta Ads & social",
     copy: "Plan Meta campaigns and social media activity for your brand.",
-    icon: Sparkles,
+    icon: Megaphone,
     href: "/business/meta-ads",
   },
   {
     title: "Content & analytics",
     copy: "Create useful content and understand how visitors engage with it.",
-    icon: ArrowUpRight,
+    icon: BarChart3,
     href: "/business/content-marketing",
-  },
-];
-
-const studentServices = [
-  {
-    title: "Portfolio websites",
-    copy: "Present your projects, skills, and experience in a personal portfolio.",
-    icon: Monitor,
-    href: "/students/portfolio-websites",
-  },
-  {
-    title: "Resume building",
-    copy: "Organize your experience into a clear, role-focused resume.",
-    icon: FileText,
-    href: "/students/resume-building",
-  },
-  {
-    title: "Project guidance",
-    copy: "Understand your project, solve problems, and prepare to explain your work.",
-    icon: Code2,
-    href: "/students/project-guidance",
-  },
-  {
-    title: "Interview preparation",
-    copy: "Practice technical questions, project walkthroughs, and communication.",
-    icon: MessageSquareText,
-    href: "/students/interview-preparation",
-  },
-  {
-    title: "LinkedIn optimization",
-    copy: "Make your profile easier to understand and navigate for your goals.",
-    icon: Linkedin,
-    href: "/students/linkedin-optimization",
-  },
-  {
-    title: "Learning resources",
-    copy: "Build a practical learning path with curated topics and project ideas.",
-    icon: BookOpen,
-    href: "/students/learning-resources",
-  },
-];
-
-const stageData = [
-  {
-    label: "First year",
-    title: "Start with the fundamentals.",
-    detail: "Get a friendly learning roadmap, beginner project guidance, and a first personal learning portfolio.",
-    items: ["Programming fundamentals", "Learning roadmaps", "Beginner project guidance", "Personal learning portfolio"],
-  },
-  {
-    label: "Second & third year",
-    title: "Turn skills into practical work.",
-    detail: "Choose a direction, build mini-projects, and present your work clearly through a portfolio and GitHub.",
-    items: ["Mini-project guidance", "Technology-specific portfolios", "GitHub project presentation", "Technical skill resources"],
-  },
-  {
-    label: "Final year",
-    title: "Make your project easy to explain.",
-    detail: "Get guidance on project understanding, documentation, demonstrations, resumes, and interview practice.",
-    items: ["Major-project guidance", "Documentation support", "Presentation preparation", "Resume & interview support"],
-  },
-  {
-    label: "Fresh graduate",
-    title: "Prepare a confident professional presence.",
-    detail: "Bring together your resume, LinkedIn profile, portfolio, and practical interview preparation.",
-    items: ["ATS-conscious resume structure", "LinkedIn profile optimization", "Portfolio website", "Technical interview practice"],
-  },
-  {
-    label: "Working professional",
-    title: "Make your next milestone visible.",
-    detail: "Refresh your professional brand, showcase your experience, and explore new learning directions.",
-    items: ["Portfolio redesign", "Personal website", "Professional branding", "Freelance & entrepreneurship support"],
   },
 ];
 
@@ -294,10 +229,6 @@ const projects = [
   },
 ];
 
-const featuredClientProjects = projects.filter(
-  (project) => project.image && project.category !== "Personal",
-);
-
 const servicePages = {
   "/business/website-development": {
     title: "Business website development",
@@ -359,59 +290,16 @@ const servicePages = {
     group: "For businesses",
     deliverables: ["Content direction", "Audience and topic planning", "Analytics setup discussion", "Measurement and review planning"],
   },
-  "/students/portfolio-websites": {
-    title: "Portfolio websites",
-    intro: "A personal website that helps you present your skills, projects, and professional direction.",
-    group: "For students & professionals",
-    deliverables: ["Role-focused content structure", "Project presentation", "Responsive personal website", "Launch guidance"],
-  },
-  "/students/resume-building": {
-    title: "Resume building",
-    intro: "A clear, role-aware resume that helps a reader quickly understand your experience and skills.",
-    group: "For students & professionals",
-    deliverables: ["Experience and project organization", "ATS-conscious structure", "Role-focused wording suggestions", "Review and refinement"],
-  },
-  "/students/linkedin-optimization": {
-    title: "LinkedIn profile optimization",
-    intro: "Improve the clarity and consistency of your professional profile and project presentation.",
-    group: "For students & professionals",
-    deliverables: ["Headline and About section guidance", "Project presentation suggestions", "Profile organization", "Personal brand alignment"],
-  },
-  "/students/project-guidance": {
-    title: "Student project guidance",
-    intro: "Build understanding as you work through a project, explain your choices, and prepare to present your work.",
-    group: "For students & professionals",
-    deliverables: ["Scope and concept discussions", "Technical explanations", "Debugging guidance", "Documentation and demo preparation"],
-    notice: "Guidance is educational and supports independent learning. Students are responsible for following their institution's academic-integrity rules.",
-  },
-  "/students/learning-resources": {
-    title: "Technology learning resources",
-    intro: "Find a practical learning direction with structured topics, coding resources, and project ideas.",
-    group: "For students & professionals",
-    deliverables: ["Role-based learning roadmaps", "Practical coding topics", "Project ideas", "Interview preparation resources"],
-  },
-  "/students/interview-preparation": {
-    title: "Interview preparation",
-    intro: "Practice technical questions, project explanations, and communication in a structured way.",
-    group: "For students & professionals",
-    deliverables: ["Technical practice topics", "Project walkthrough preparation", "Mock interview discussions", "Communication practice"],
-    notice: "Preparation can help you practice, but interview outcomes are never guaranteed.",
-  },
-  "/students/professional-branding": {
-    title: "Professional branding",
-    intro: "Create a consistent digital presence across your portfolio, personal website, and professional profiles.",
-    group: "For students & professionals",
-    deliverables: ["Professional positioning discussion", "Personal website planning", "Profile consistency review", "Freelancer and creator branding"],
-  },
 };
 
 const navLinks = [
   ["Home", "/"],
-  ["Services", "/services"],
-  ["For Businesses", "/business"],
-  ["For Students", "/students"],
-  ["Our Work", "/work"],
   ["About", "/about"],
+  ["Services", "/services"],
+  ["Our Work", "/work"],
+  ["Career Hub", "/career-hub"],
+  ["Blog", "/blog"],
+  ["FAQ", "/faq"],
   ["Contact", "/contact"],
 ];
 
@@ -451,14 +339,14 @@ function SiteFooter() {
       <div className="vx-container vx-footer__top">
         <div className="vx-footer__brand">
           <Link className="vx-brand" to="/"><img src="/vertex-solutions-logo.png" alt="" /><span><strong>360° Vertex</strong><small>Solutions</small></span></Link>
-          <p>Your Vision. Your Skills. Your Future.<br />One brand. Two pathways. Complete digital solutions.</p>
+          <p>Your Skills. Your Career. Your Future.<br />All in 360°.</p>
           <a href={waLink()} target="_blank" rel="noopener noreferrer" className="vx-footer__chat"><MessageCircle size={17} /> WhatsApp {COMPANY.whatsappPhone}</a>
           <a className="vx-footer__contact-link" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
           <a className="vx-footer__contact-link" href={`tel:+${COMPANY.phoneRaw}`}>{COMPANY.phone}</a>
         </div>
         <div><h3>Explore</h3>{navLinks.map(([label, path]) => <Link key={path} to={path}>{label}</Link>)}</div>
-        <div><h3>Business</h3>{businessServices.slice(0, 4).map((item) => <Link key={item.href + item.title} to={item.href}>{item.title}</Link>)}</div>
-        <div><h3>Students & careers</h3>{studentServices.slice(0, 4).map((item) => <Link key={item.href} to={item.href}>{item.title}</Link>)}</div>
+        <div><h3>Solutions</h3>{businessServices.slice(0, 4).map((item) => <Link key={item.href + item.title} to={item.href}>{item.title}</Link>)}</div>
+        <div><h3>Company</h3><Link to="/about">About 360° Vertex</Link><Link to="/founder">Meet the founder</Link><Link to="/contact">Start a project</Link><Link to="/privacy-policy">Privacy</Link></div>
       </div>
       <div className="vx-container vx-footer__bottom">
         <span>© 2025 {COMPANY.name}. All rights reserved.</span>
@@ -475,17 +363,36 @@ function SiteFooter() {
 
 export function SiteLayout({ children }) {
   const location = useLocation();
+  const [isInitialHome] = useState(() => location.pathname === "/");
+  const [introComplete, setIntroComplete] = useState(
+    () => !isInitialHome || window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  const completeIntro = useCallback(() => setIntroComplete(true), []);
 
   useEffect(() => {
     const shell = document.querySelector(".vx-site-shell");
     const sections = document.querySelectorAll("main > section, main > div > section");
+    const imageTargets = document.querySelectorAll("main section, main main, .public-prompts__hero");
     const serviceCards = document.querySelectorAll(".vx-service-grid--directory .vx-service-card");
     if (!shell) return undefined;
     const motionTargets = [...sections, ...serviceCards];
+    imageTargets.forEach((target) => {
+      target.classList.add("vx-image-wash");
+      target.style.setProperty("--vx-section-art", 'url("/digital-marketing-background.png")');
+    });
+    const clearSectionArtwork = () => {
+      imageTargets.forEach((target) => {
+        target.classList.remove("vx-image-wash");
+        target.style.removeProperty("--vx-section-art");
+      });
+    };
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
       motionTargets.forEach((target) => target.classList.add("is-visible"));
-      return () => motionTargets.forEach((target) => target.classList.remove("is-visible"));
+      return () => {
+        motionTargets.forEach((target) => target.classList.remove("is-visible"));
+        clearSectionArtwork();
+      };
     }
 
     sections.forEach((section) => section.classList.add("vx-reveal"));
@@ -509,6 +416,7 @@ export function SiteLayout({ children }) {
       observer.disconnect();
       shell.classList.remove("vx-motion-ready");
       sections.forEach((section) => section.classList.remove("vx-reveal", "is-visible"));
+      clearSectionArtwork();
       serviceCards.forEach((card) => {
         card.classList.remove("vx-reveal-item", "is-visible");
         card.style.removeProperty("--vx-reveal-delay");
@@ -516,7 +424,14 @@ export function SiteLayout({ children }) {
     };
   }, [location.pathname]);
 
-  return <div className="vx-site-shell"><SiteNavigation /><main>{children}</main><SiteFooter /></div>;
+  return (
+    <div className={`vx-site-shell${introComplete ? " vx-site-shell--intro-complete" : ""}`}>
+      {isInitialHome && !introComplete && <IntroAnimation onComplete={completeIntro} />}
+      <SiteNavigation />
+      <main>{children}</main>
+      <SiteFooter />
+    </div>
+  );
 }
 
 function Eyebrow({ children }) {
@@ -529,6 +444,32 @@ function SectionTitle({ eyebrow, title, copy, align = "left" }) {
 
 function CtaLink({ to, children, secondary = false }) {
   return <Link className={`vx-button${secondary ? " vx-button--outline" : ""}`} to={to}>{children}<ArrowRight size={16} /></Link>;
+}
+
+function ServiceIdentity({ service, path, compact = false }) {
+  const serviceIndex = businessServices.findIndex((item) => item.href === path);
+  const serviceItem = businessServices[serviceIndex];
+  const Icon = serviceItem?.icon || Sparkles;
+  const accents = ["#1769d2", "#08b9e8", "#7a20d6", "#08b9e8", "#1769d2", "#7a20d6", "#08b9e8", "#1769d2", "#7a20d6", "#08b9e8"];
+  const accent = accents[Math.max(serviceIndex, 0) % accents.length];
+
+  return (
+    <aside className={`vx-service-identity${compact ? " vx-service-identity--compact" : ""}`} style={{ "--service-accent": accent }} aria-label={`${service.title} visual identity`}>
+      <div className="vx-service-identity__art" aria-hidden="true">
+        <span className="vx-service-identity__orbit vx-service-identity__orbit--outer" />
+        <span className="vx-service-identity__orbit vx-service-identity__orbit--inner" />
+        <span className="vx-service-identity__spark vx-service-identity__spark--one" />
+        <span className="vx-service-identity__spark vx-service-identity__spark--two" />
+        <div className="vx-service-identity__icon"><Icon size={48} strokeWidth={1.35} /></div>
+        <div className="vx-service-identity__logo"><img src="/vertex-solutions-logo.png" alt="360° Vertex Solutions" /></div>
+      </div>
+      <div className="vx-service-identity__copy">
+        <span>{service.group} · 360° Vertex Solutions</span>
+        <strong>{service.title}</strong>
+        <small>{service.deliverables[0]}</small>
+      </div>
+    </aside>
+  );
 }
 
 function ProjectGrid({ limit, slugs }) {
@@ -591,23 +532,15 @@ function EnquiryForm({ audience = "general" }) {
           <label>Approximate budget<select name="Approximate budget" required defaultValue=""><option value="" disabled>Select a range</option><option>Under ₹25,000</option><option>₹25,000–₹75,000</option><option>₹75,000–₹2,00,000</option><option>₹2,00,000+</option><option>Not sure yet</option></select></label>
           <label>Project goals<textarea name="Project goals" rows="4" required placeholder="What would you like to achieve?" /></label>
         </>
-      ) : audience === "student" ? (
-        <>
-          <div className="vx-form__row"><label>Your name<input name="Name" autoComplete="name" required /></label><label>Email address<input name="Email" type="email" autoComplete="email" required /></label></div>
-          <label>Current education or career stage<select name="Education or career stage" required defaultValue=""><option value="" disabled>Choose your stage</option>{stageData.map((stage) => <option key={stage.label}>{stage.label}</option>)}</select></label>
-          <div className="vx-form__row"><label>Technology or role of interest<input name="Technology or role of interest" placeholder="e.g. Java, frontend development" required /></label><label>Service required<select name="Service required" required defaultValue=""><option value="" disabled>Select a service</option>{studentServices.map((service) => <option key={service.title}>{service.title}</option>)}</select></label></div>
-          <label>Requirements or goals<textarea name="Requirements or goals" rows="4" required placeholder="Tell us what you are working toward." /></label>
-          <label>Optional budget range<select name="Optional budget range" defaultValue=""><option value="">Prefer not to say</option><option>Under ₹5,000</option><option>₹5,000–₹15,000</option><option>₹15,000+</option><option>I'd like to discuss</option></select></label>
-        </>
       ) : (
         <>
           <div className="vx-form__row"><label>Your name<input name="Name" autoComplete="name" required /></label><label>Email address<input name="Email" type="email" autoComplete="email" required /></label></div>
-          <label>I&apos;m interested in<select name="Audience" defaultValue="General enquiry"><option>General enquiry</option><option>Business solutions</option><option>Student and professional services</option></select></label>
+          <label>I&apos;m interested in<select name="Service interest" defaultValue=""><option value="" disabled>Select a solution</option>{businessServices.map((service) => <option key={service.title}>{service.title}</option>)}</select></label>
           <label>How can we help?<textarea name="Requirements or goals" rows="5" required placeholder="Share a little about what you need." /></label>
         </>
       )}
       {status && <p className={`vx-form__status vx-form__status--${status}`} role="status">{message}</p>}
-      <button className="vx-button vx-button--full" type="submit">{audience === "student" ? "Find the right service" : "Continue in WhatsApp"}<ArrowRight size={16} /></button>
+      <button className="vx-button vx-button--full" type="submit">Continue in WhatsApp<ArrowRight size={16} /></button>
       <p className="vx-form__note">This opens a prepared message in WhatsApp. You can review it before choosing to send.</p>
     </form>
   );
@@ -617,9 +550,9 @@ function ContactBlock({ audience = "general", compact = false }) {
   return <section className={`vx-contact${compact ? " vx-contact--compact" : ""}`} id="enquiry">
     <div className="vx-container vx-contact__grid">
       <div className="vx-contact__intro">
-        <Eyebrow>{audience === "business" ? "LET'S BUILD SOMETHING" : audience === "student" ? "YOUR NEXT STEP" : "START A CONVERSATION"}</Eyebrow>
-        <h2>{audience === "business" ? "Tell us where you want to grow." : audience === "student" ? "Let's find a practical way forward." : "Your next step starts here."}</h2>
-        <p>{audience === "business" ? "Share your goals, services, and budget. We'll start with a conversation about fit and scope." : audience === "student" ? "Tell us where you are in your journey and what you want help with." : "Tell us what you have in mind. We’ll help you find the right path."}</p>
+        <Eyebrow>{audience === "business" ? "LET'S BUILD SOMETHING" : "START A CONVERSATION"}</Eyebrow>
+        <h2>{audience === "business" ? "Tell us where you want to grow." : "Your next step starts here."}</h2>
+        <p>{audience === "business" ? "Share your goals, services, and budget. We'll start with a conversation about fit and scope." : "Tell us what you have in mind. We’ll help you find the right path."}</p>
         <a className="vx-contact__direct" href={waLink()} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} /> WhatsApp {COMPANY.whatsappPhone} <ArrowUpRight size={16} /></a>
         <a className="vx-contact__phone" href={`tel:+${COMPANY.phoneRaw}`}>Call {COMPANY.phone}</a>
       </div>
@@ -628,114 +561,253 @@ function ContactBlock({ audience = "general", compact = false }) {
   </section>;
 }
 
+const homeServices = [
+  {
+    title: "Web Development",
+    icon: Code2,
+    color: "#7139d8",
+    copy: "We build fast, secure, modern, and scalable websites tailored to your requirements.",
+    items: ["Business Websites", "Portfolio Websites", "E-commerce Websites", "Custom Web Applications", "Landing Pages"],
+  },
+  {
+    title: "Digital Marketing",
+    icon: Megaphone,
+    color: "#4263eb",
+    copy: "We create data-driven marketing strategies that improve online visibility and engagement.",
+    items: ["SEO", "Google Ads", "Meta Ads", "Social Media Marketing", "Analytics and Reporting"],
+  },
+  {
+    title: "Branding & Design",
+    icon: Palette,
+    color: "#7139d8",
+    copy: "We design memorable brands that help businesses build recognition and trust.",
+    items: ["Logo Design", "Brand Identity", "Graphic Design", "Social Media Creatives", "UI/UX Design"],
+  },
+  {
+    title: "Career & Education",
+    icon: GraduationCap,
+    color: "#39217d",
+    copy: "We empower students and job seekers with practical learning resources and professional development services.",
+    items: ["ATS-Friendly Resumes", "LinkedIn Optimization", "Interview Preparation", "Mini & Final Year Projects", "Educational Resources"],
+  },
+];
+
+const whyChoose = [
+  { icon: Rocket, title: "Fast Delivery", copy: "Quality solutions delivered within agreed timelines." },
+  { icon: ShieldCheck, title: "Secure & Reliable", copy: "Focus on reliable technology and responsible development." },
+  { icon: BarChart3, title: "Result-Driven", copy: "Practical solutions designed around your objectives." },
+  { icon: Headphones, title: "Support & Guidance", copy: "Assistance throughout your project journey." },
+];
+
+const portfolioFilters = ["All", "Web Development", "E-commerce", "Branding", "Digital Marketing", "AI / ML"];
+
 export function HomePage() {
-  const [faqOpen, setFaqOpen] = useState(0);
-  const faqs = [
-    ["Who do you work with?", "We support businesses and startups, as well as students, graduates, freelancers, and working technology professionals."],
-    ["Can I ask about a service before deciding?", "Yes. Send an enquiry with your needs and goals. We can discuss scope and the next step before you decide."],
-    ["Do you guarantee jobs or interview results?", "No. We provide practical preparation and professional services, but hiring and interview outcomes depend on many factors and cannot be guaranteed."],
-    ["How does student project guidance work?", "Guidance is intended to build understanding and support independent work. Students should follow their institution's academic-integrity rules."],
-  ];
-  return <>
-    <section className="vx-hero">
-      <div className="vx-hero__glow vx-hero__glow--a" /><div className="vx-hero__glow vx-hero__glow--b" />
+  const [filter, setFilter] = useState("All");
+
+  const filteredProjects = projects.filter((project) => {
+    if (filter === "All") return project.image;
+    const type = (project.type || "").toLowerCase();
+    if (filter === "Web Development") return /business|website|crm|events/.test(type);
+    if (filter === "E-commerce") return /e-commerce|ecommerce|store|shop/.test(type);
+    if (filter === "Branding") return /graphic|brand|design|logo/.test(type);
+    if (filter === "Digital Marketing") return /marketing|seo|ads/.test(type);
+    if (filter === "AI / ML") return /machine learning|ai\/ml|ml|fraud/.test(type);
+    return project.image;
+  });
+
+  return <div className="vx-home-page">
+    {/* ===== HERO ===== */}
+    <section className="vx-hero vx-hero--ads">
+      <div className="vx-hero__blobs" aria-hidden="true">
+        <span className="vx-hero__blob vx-hero__blob--a" />
+        <span className="vx-hero__blob vx-hero__blob--b" />
+      </div>
       <div className="vx-container vx-hero__grid">
         <div className="vx-hero__copy">
-          <Eyebrow>DIGITAL SOLUTIONS <b>·</b> CAREER GROWTH <b>·</b> TECHNOLOGY</Eyebrow>
-          <h1>One platform.<br /><span>Solutions for every stage.</span></h1>
-          <p>We help businesses build their digital presence and help students and professionals develop the websites, projects, and professional profiles they need to move forward.</p>
-          <div className="vx-hero__actions"><CtaLink to="/business">Explore our services</CtaLink><CtaLink to="/work" secondary>View our work</CtaLink></div>
-          <div className="vx-hero__trust"><span>Practical, personal support</span><span>Business and career pathways</span></div>
+          <span className="vx-hero__badge">WE BUILD DIGITAL EXPERIENCES</span>
+          <h1>Powerful <span className="vx-grad">Digital Solutions</span><br /><em>That Drive Real Results.</em></h1>
+          <p>We design stunning websites, build innovative digital experiences, and deliver technology solutions that help students, professionals, and businesses grow.</p>
+          <div className="vx-hero__actions">
+            <CtaLink to="/contact">LET'S GET STARTED</CtaLink>
+            <CtaLink to="/work" secondary>VIEW OUR PORTFOLIO</CtaLink>
+          </div>
+          <ul className="vx-hero__chips">
+            <li><Code2 size={16} /> Web Development</li>
+            <li><GraduationCap size={16} /> Resume &amp; Career Services</li>
+            <li><Palette size={16} /> Branding &amp; Design</li>
+            <li><BarChart3 size={16} /> Growth Strategy</li>
+          </ul>
         </div>
-        <div className="vx-hero-work" aria-label="Selected website projects">
-          <a className="vx-hero-work__main" href="https://vaakya-creations.netlify.app/" target="_blank" rel="noopener noreferrer">
-            <img src="/client-projects/vaakya-creations.jpg" alt="Vaakya Creations e-commerce website screenshot" />
-            <span><small>ECOMMERCE WEBSITE</small>Vaakya Creations <ArrowUpRight size={15} /></span>
-          </a>
-          <a className="vx-hero-work__secondary" href="https://prskillverse.com/" target="_blank" rel="noopener noreferrer">
-            <img src="/client-projects/pr-skillverse.jpg" alt="PR Skillverse training website screenshot" />
-            <span><small>EDUCATION WEBSITE</small>PR Skillverse</span>
-          </a>
-          <p className="vx-hero-work__note">A few real projects, built for real needs.</p>
-        </div>
-      </div>
-      <a href="#pathways" className="vx-scroll-cue">DISCOVER YOUR PATH <ArrowDownRight size={15} /></a>
-    </section>
 
-    <section className="vx-section vx-pathways" id="pathways">
-      <div className="vx-container">
-        <SectionTitle eyebrow="ONE BRAND. TWO PATHWAYS." title="Where would you like to go?" copy="Choose the path that fits you. We’ll help you take the next step." align="center" />
-        <div className="vx-pathway-grid">
-          <article className="vx-path-card vx-path-card--business"><div className="vx-path-card__icon"><Monitor size={22} /></div><span className="vx-card-label">FOR BUSINESSES & STARTUPS</span><h3>Build your brand.<br />Grow your business.</h3><p>Professional websites, e-commerce, digital marketing, and brand-building support shaped around your goals.</p><div className="vx-path-card__tags"><span>Websites</span><span>Marketing</span><span>Growth</span></div><div className="vx-path-card__actions"><CtaLink to="/business">Explore business solutions</CtaLink><Link to="/contact">Start your project <ArrowUpRight size={15} /></Link></div></article>
-          <article className="vx-path-card vx-path-card--students"><div className="vx-path-card__icon"><GraduationCap size={23} /></div><span className="vx-card-label">FOR STUDENTS & PROFESSIONALS</span><h3>Learn. Build.<br />Get career-ready.</h3><p>Portfolios, project guidance, resumes, learning resources, and professional presence for your next milestone.</p><div className="vx-path-card__tags"><span>Learn</span><span>Build</span><span>Showcase</span></div><div className="vx-path-card__actions"><CtaLink to="/students">Explore student services</CtaLink><Link to="/students#enquiry">Find your solution <ArrowUpRight size={15} /></Link></div></article>
-        </div>
-      </div>
-    </section>
+        <div className="vx-hero-visual" aria-label="360° Vertex Solutions website shown on laptop and mobile mockups">
+          <div className="vx-hero-visual__circle" aria-hidden="true" />
+          <div className="vx-hero-visual__dots" aria-hidden="true" />
 
-    <section className="vx-section vx-section--soft">
-      <div className="vx-container">
-        <SectionTitle eyebrow="FOR BUSINESSES" title="Make your digital presence work harder." copy="From a first website to a broader marketing plan, get clear services for your next phase." />
-        <div className="vx-service-grid">{businessServices.slice(0, 4).map((service) => { const Icon = service.icon; return <Link className="vx-service-card" to={service.href} key={service.title}><Icon size={21} /><h3>{service.title}</h3><p>{service.copy}</p><span>Explore service <ArrowUpRight size={15} /></span></Link>; })}</div>
-        <div className="vx-section__action"><CtaLink to="/business">Explore business solutions</CtaLink></div>
-      </div>
-    </section>
-
-    <section className="vx-section">
-      <div className="vx-container">
-        <SectionTitle eyebrow="FOR STUDENTS & PROFESSIONALS" title="Build skills. Make your work visible." copy="Practical support for the journey from learning the basics to growing your professional profile." />
-        <div className="vx-service-grid vx-service-grid--students">{studentServices.slice(0, 4).map((service, index) => <Link className="vx-service-card vx-service-card--student" to={service.href} key={service.title}><span className="vx-service-card__number">0{index + 1}</span><h3>{service.title}</h3><p>{service.copy}</p><span>Explore service <ArrowUpRight size={15} /></span></Link>)}</div>
-        <div className="vx-section__action"><CtaLink to="/students" secondary>Explore student services</CtaLink></div>
-      </div>
-    </section>
-
-    <section className="vx-section vx-section--soft">
-      <div className="vx-container"><div className="vx-section-heading-row"><SectionTitle eyebrow="SELECTED WORK" title="Good work, made visible." copy="A look at business websites, student projects, and technical work." /><Link className="vx-text-link" to="/work">View all projects <ArrowRight size={16} /></Link></div><ProjectGrid slugs={["pr-skillverse", "vaakya-creations", "froot-bowl", "sasindra-portfolio", "ration-shop-crm", "artisan-coffee-house"]} /></div>
-    </section>
-
-    <section className="vx-section vx-process">
-      <div className="vx-container"><SectionTitle eyebrow="HOW WE WORK" title="Clear steps. Thoughtful work." copy="We keep the process collaborative, practical, and focused on the outcome you need." align="center" />
-        <div className="vx-process-grid">{[["01", "Listen", "We learn about your goals, audience, current stage, and constraints."], ["02", "Shape the plan", "We agree on scope, deliverables, priorities, and the right next step."], ["03", "Build together", "We share progress, gather feedback, and keep the work aligned."], ["04", "Move forward", "We review the result and discuss handover or continued support."]].map(([number, title, copy]) => <article className="vx-process-step" key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
-      </div>
-    </section>
-
-    <section className="vx-section vx-testimonials" aria-labelledby="vx-testimonials-title">
-      <div className="vx-container vx-testimonials__heading">
-        <Eyebrow>SELECTED CLIENT WORK</Eyebrow>
-        <h2 id="vx-testimonials-title">Projects made possible together.</h2>
-        <p>A few of the websites and digital projects we’ve worked on. We’ll add client feedback here when approved reviews are available.</p>
-      </div>
-      <div className="vx-testimonials__marquee" role="region" aria-label="Selected client project previews scrolling right to left">
-        <div className="vx-testimonials__track">
-          {[false, true].map((isDuplicate) => (
-            <div className="vx-testimonials__group" aria-hidden={isDuplicate || undefined} key={String(isDuplicate)}>
-              {featuredClientProjects.map((project) => (
-                <Link
-                  className="vx-testimonials__project"
-                  to={`/work/${project.slug}`}
-                  tabIndex={isDuplicate ? -1 : undefined}
-                  key={project.slug}
-                >
-                  <img src={project.image} alt="" loading="lazy" />
-                  <span>{project.title}</span>
-                </Link>
-              ))}
+          {/* Laptop mockup */}
+          <div className="vx-mockup vx-mockup--laptop">
+            <div className="vx-mockup__camera" />
+            <div className="vx-mockup__screen">
+              <div className="vx-mockup__bar">
+                <span /><span /><span />
+                <strong>360° Vertex Solutions</strong>
+              </div>
+              <div className="vx-mockup__content">
+                <div className="vx-mockup__hero">
+                  <small>We Create Digital Experiences</small>
+                  <h4>Websites that make an impact</h4>
+                  <a className="vx-mockup__cta">Explore our work</a>
+                </div>
+                <div className="vx-mockup__grid">
+                  <div className="vx-mockup__card" style={{ background: "linear-gradient(135deg,#7139d8,#4263eb)" }}>
+                    <span>Projects</span><b>250+</b>
+                  </div>
+                  <div className="vx-mockup__card" style={{ background: "linear-gradient(135deg,#4263eb,#39217d)" }}>
+                    <span>Clients</span><b>120+</b>
+                  </div>
+                  <div className="vx-mockup__card" style={{ background: "linear-gradient(135deg,#39217d,#7139d8)" }}>
+                    <span>Success</span><b>98%</b>
+                  </div>
+                  <div className="vx-mockup__card vx-mockup__card--img">
+                    <span className="vx-mockup__badge">Web Development</span>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div className="vx-mockup__base"><div /></div>
+          </div>
+
+          {/* Smartphone mockup */}
+          <div className="vx-mockup vx-mockup--phone">
+            <div className="vx-mockup__notch" />
+            <div className="vx-mockup__screen">
+              <div className="vx-mockup__bar vx-mockup__bar--phone">
+                <strong>Your Brand</strong>
+              </div>
+              <div className="vx-mockup__stats">
+                <div><b>140</b><small>Projects</small></div>
+                <div><b>22K</b><small>Followers</small></div>
+                <div><b>180</b><small>Following</small></div>
+              </div>
+              <a className="vx-mockup__cta vx-mockup__cta--phone">Message</a>
+              <div className="vx-mockup__mini-grid">
+                <span /><span /><span /><span />
+                <span /><span /><span /><span />
+                <span /><span /><span /><span />
+              </div>
+            </div>
+          </div>
+
+          {/* Floating cards */}
+          <div className="vx-float-card vx-float-card--1">
+            <Monitor size={18} />
+            <div><b>Web Development</b><small>Fast · Secure · Scalable</small></div>
+          </div>
+          <div className="vx-float-card vx-float-card--2">
+            <Globe size={18} />
+            <div><b>SEO Ready</b><small>Optimized for growth</small></div>
+          </div>
+        </div>
+      </div>
+      <a href="#services" className="vx-scroll-cue">SCROLL TO EXPLORE <ArrowDownRight size={15} /></a>
+    </section>
+
+    {/* ===== SERVICES ===== */}
+    <section className="vx-section" id="services">
+      <div className="vx-container">
+        <SectionTitle eyebrow="WHAT WE DO" title="Our Services" copy="Everything you need to build, grow, and succeed in the digital world." align="center" />
+        <div className="vx-service-grid vx-service-grid--ads">
+          {homeServices.map((service) => {
+            const Icon = service.icon;
+            return (
+              <article className="vx-service-card vx-service-card--ads" key={service.title} style={{ "--accent": service.color }}>
+                <span className="vx-service-card__icon"><Icon size={24} /></span>
+                <h3>{service.title}</h3>
+                <p>{service.copy}</p>
+                <ul className="vx-service-card__list">
+                  {service.items.map((item) => <li key={item}><Check size={14} /> {item}</li>)}
+                </ul>
+                <Link className="vx-service-card__cta" to="/services">Explore Service <ArrowUpRight size={15} /></Link>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== WHY CHOOSE US ===== */}
+    <section className="vx-why-band">
+      <div className="vx-container vx-why-band__grid">
+        {whyChoose.map((item) => {
+          const Icon = item.icon;
+          return (
+            <article className="vx-why-band__item" key={item.title}>
+              <span className="vx-why-band__icon"><Icon size={26} /></span>
+              <div>
+                <h3>{item.title.toUpperCase()}</h3>
+                <p>{item.copy}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+
+    {/* ===== RECENT PROJECTS ===== */}
+    <section className="vx-section vx-section--soft">
+      <div className="vx-container">
+        <div className="vx-section-heading-row">
+          <SectionTitle eyebrow="OUR WORK" title="Recent Projects" copy="A selection of websites, commerce experiences, branding, and technical projects." />
+          <Link className="vx-text-link" to="/work">View all projects <ArrowRight size={16} /></Link>
+        </div>
+        <div className="vx-filter" aria-label="Filter recent projects">
+          {portfolioFilters.map((item) => (
+            <button className={filter === item ? "is-active" : ""} key={item} type="button" aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}</button>
           ))}
         </div>
-      </div>
-      <div className="vx-container vx-testimonials__footer">
-        <Link className="vx-text-link" to="/work">Explore all projects <ArrowRight size={16} /></Link>
-        <Link className="vx-testimonials__feedback" to="/contact">Worked with us? Share feedback</Link>
+        <div className="vx-project-grid vx-project-grid--ads">
+          {filteredProjects.map((project) => (
+            <Link className="vx-project-card" to={`/work/${project.slug}`} key={project.slug}>
+              <div className="vx-project-card__media">
+                {project.image
+                  ? <img src={project.image} alt={`${project.title} project preview`} loading="lazy" />
+                  : <div className="vx-project-card__placeholder"><span>{project.category}</span></div>}
+                <span className="vx-project-card__cat">{project.category}</span>
+              </div>
+              <div className="vx-project-card__copy">
+                <h3>{project.title}</h3>
+                <p>{project.overview}</p>
+                <span className="vx-project-card__link">View Project <ArrowUpRight size={15} /></span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        {filteredProjects.length === 0 && <p className="vx-empty">No projects in this category yet. Try another filter.</p>}
       </div>
     </section>
 
-    <section className="vx-section"><div className="vx-container vx-why-grid"><div><SectionTitle eyebrow="WHY 360° VERTEX" title="A useful partner, at every stage." copy="From the first conversation to the next iteration, we make the work understandable and the path forward clear." /><CtaLink to="/about" secondary>More about us</CtaLink></div><div className="vx-why-list">{[["One brand, two pathways", "Business services and career support, organized around different needs."], ["Practical over complicated", "Clear conversations, relevant deliverables, and useful next steps."], ["Built around your goals", "We start with your audience and what you are trying to accomplish."], ["Transparent scope", "Discuss the work, boundaries, and pricing before moving ahead."]].map(([title, copy]) => <article key={title}><span><ShieldCheck size={18} /></span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div></div></section>
+    {/* ===== FINAL CTA ===== */}
+    <section className="vx-final-cta">
+      <div className="vx-container vx-final-cta__inner">
+        <div className="vx-final-cta__copy">
+          <Send className="vx-final-cta__plane" size={38} aria-hidden="true" />
+          <h2>Ready to Transform Your Ideas into Reality?</h2>
+          <p>Let's build something amazing together.</p>
+          <a className="vx-button vx-button--light" href={waLink()} target="_blank" rel="noopener noreferrer">GET IN TOUCH <ArrowRight size={16} /></a>
+        </div>
+        <div className="vx-final-cta__contacts">
+          <a href={`mailto:${COMPANY.email}`}><Mail size={20} /> <span><small>EMAIL US</small><b>{COMPANY.email}</b></span></a>
+          <a href={waLink()} target="_blank" rel="noopener noreferrer"><MessageCircle size={20} /> <span><small>WHATSAPP</small><b>{COMPANY.whatsappPhone}</b></span></a>
+          <div className="vx-final-cta__socials">
+            {SOCIAL.instagram && <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>}
+            {SOCIAL.linkedin && <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>}
+            {SOCIAL.youtube && <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a>}
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section className="vx-section vx-section--soft"><div className="vx-container vx-faq-layout"><SectionTitle eyebrow="GOOD TO KNOW" title="A few common questions." copy="Still deciding? Start with a conversation." /><div className="vx-faq-list">{faqs.map(([question, answer], index) => <div className={`vx-faq${faqOpen === index ? " is-open" : ""}`} key={question}><button type="button" aria-expanded={faqOpen === index} onClick={() => setFaqOpen(faqOpen === index ? -1 : index)}><span>{question}</span><span>{faqOpen === index ? "−" : "+"}</span></button>{faqOpen === index && <p>{answer}</p>}</div>)}</div></div></section>
-
-    <section className="vx-cta-band"><div className="vx-container vx-cta-band__inner"><div><Eyebrow>YOUR VISION. YOUR SKILLS. YOUR FUTURE.</Eyebrow><h2>Let’s make your next step count.</h2><p>Tell us what you’re working toward. We’ll help you find the right path.</p></div><CtaLink to="/contact">Get started</CtaLink></div></section>
     <ContactBlock compact />
-  </>;
+  </div>;
 }
 
 export function BusinessPage() {
@@ -769,19 +841,6 @@ export function BusinessPage() {
     </section>
     <section className="vx-section vx-section--soft"><div className="vx-container"><SectionTitle eyebrow="OUR PROCESS" title="From first conversation to launch." align="center" /><div className="vx-process-grid">{[["01", "Discover", "Your goals, audience, services, timeline, and budget."], ["02", "Define", "A practical scope, clear deliverables, and shared priorities."], ["03", "Create", "Design and development shaped by your feedback."], ["04", "Launch & review", "A considered handover and next-step conversation."]].map(([n, t, c]) => <article className="vx-process-step" key={n}><span>{n}</span><h3>{t}</h3><p>{c}</p></article>)}</div></div></section>
     <div id="business-enquiry"><ContactBlock audience="business" /></div>
-  </>;
-}
-
-export function StudentsPage() {
-  const [activeStage, setActiveStage] = useState(0);
-  const stage = stageData[activeStage];
-  return <>
-    <section className="vx-inner-hero vx-inner-hero--students"><div className="vx-container vx-inner-hero__grid vx-inner-hero__grid--students"><div><Eyebrow>STUDENT & PROFESSIONAL GROWTH</Eyebrow><h1>From your first line of code to your next career milestone.</h1><p>Build practical projects, showcase your skills, create your professional portfolio, and prepare for opportunities with digital services designed for your journey.</p><p className="vx-student-audience">For B.Tech and diploma learners, graduates, job seekers, freelancers, and working IT professionals.</p><div className="vx-hero__actions"><CtaLink to="#student-services">Explore student services</CtaLink><CtaLink to="/students/portfolio-websites" secondary>Build my portfolio</CtaLink></div><p className="vx-no-guarantees">Practical support and preparation — never a promise of a particular career outcome.</p></div><div className="vx-student-hero-services"><div className="vx-student-hero-services__heading"><span>STUDENT SERVICES</span><Link to="#student-services">Explore all <ArrowUpRight size={14} /></Link></div><div className="vx-student-hero-services__grid">{studentServices.map((service) => { const Icon = service.icon; return <Link className="vx-student-hero-service" to={service.href} key={service.title}><span className="vx-student-hero-service__icon"><Icon size={18} strokeWidth={1.8} /></span><span className="vx-student-hero-service__copy"><strong>{service.title}</strong><small>{service.copy}</small></span><ArrowUpRight className="vx-student-hero-service__arrow" size={15} /></Link>; })}</div></div></div></section>
-    <section className="vx-section vx-stage-section"><div className="vx-container"><SectionTitle eyebrow="FIND YOUR STAGE" title="Support that meets you where you are." copy="Choose the stage closest to your current journey to see what may be useful." align="center" /><div className="vx-stage-picker" role="tablist" aria-label="Choose your education or career stage">{stageData.map((item, index) => <button type="button" role="tab" aria-selected={activeStage === index} className={activeStage === index ? "is-active" : ""} key={item.label} onClick={() => setActiveStage(index)}>{item.label}</button>)}</div><div className="vx-stage-content" role="tabpanel"><div><span className="vx-stage-content__label">STAGE 0{activeStage + 1}</span><h3>{stage.title}</h3><p>{stage.detail}</p><Link to="/contact">Talk about your goals <ArrowRight size={16} /></Link></div><ul>{stage.items.map((item) => <li key={item}><Check size={16} />{item}</li>)}</ul></div></div></section>
-    <section id="student-services" className="vx-section vx-section--soft"><div className="vx-container"><SectionTitle eyebrow="OUR SERVICES" title="Practical support for your next move." copy="Pick a service to see what it includes and start a focused conversation." /><div className="vx-service-grid vx-service-grid--students">{studentServices.map((service, index) => <Link className="vx-service-card vx-service-card--student" to={service.href} key={service.title}><span className="vx-service-card__number">0{index + 1}</span><h3>{service.title}</h3><p>{service.copy}</p><span>Explore service <ArrowUpRight size={15} /></span></Link>)}</div></div></section>
-    <section className="vx-section"><div className="vx-container vx-integrity"><div className="vx-integrity__icon"><ShieldCheck size={23} /></div><div><Eyebrow>LEARN WITH INTEGRITY</Eyebrow><h2>Understand the work. Own your learning.</h2><p>Project guidance is intended to support your understanding, independent learning, and ability to explain your work. Always follow your college or institution’s academic-integrity rules. Service scope and pricing are discussed transparently before work begins.</p></div></div></section>
-    <section className="vx-section vx-section--soft"><div className="vx-container"><SectionTitle eyebrow="STUDENT PORTFOLIO" title="Present your skills and projects." copy="Explore the portfolio website and see how a personal site can make your work easier to discover." /><ProjectGrid slugs={["sasindra-portfolio"]} /></div></section>
-    <ContactBlock audience="student" />
   </>;
 }
 
@@ -878,24 +937,71 @@ function PageIntro({ eyebrow, title, copy }) {
 }
 
 export function AboutPage() {
-  return <><PageIntro eyebrow="ABOUT 360° VERTEX SOLUTIONS" title="One brand. Two pathways. Complete digital solutions." copy="We bring business-focused digital services and practical technology and career support together under one brand." /><section className="vx-section"><div className="vx-container vx-about-grid"><div><SectionTitle eyebrow="OUR PURPOSE" title="Help people move forward with technology." /><p>We work with businesses building their presence online and with students and professionals building skills, projects, and professional visibility. Our aim is to make digital work feel clearer, more useful, and more accessible.</p><CtaLink to="/contact" secondary>Start a conversation</CtaLink><Link className="vx-founder-link" to="/founder">Meet the founder <ArrowRight size={15} /></Link></div><div className="vx-about-card"><span>360°</span><h3>Your vision.<br />Your skills.<br />Your future.</h3><p>Digital solutions · Career growth · Technology</p></div></div></section><section className="vx-section vx-section--soft"><div className="vx-container"><SectionTitle eyebrow="OUR VALUES" title="The way we work matters." align="center" /><div className="vx-value-grid">{[["Clarity", "Straightforward scope, practical recommendations, and open conversations."], ["Care", "Thoughtful work shaped around the real people who use it."], ["Learning", "Knowledge sharing that supports confidence and independent growth."], ["Integrity", "Honest communication, realistic expectations, and responsible guidance."]].map(([title, copy]) => <article key={title}><span><Check size={17} /></span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></section><section className="vx-cta-band"><div className="vx-container vx-cta-band__inner"><div><Eyebrow>LET’S TALK</Eyebrow><h2>Have a goal you’re working toward?</h2></div><CtaLink to="/contact">Get in touch</CtaLink></div></section></>;
+  return (
+    <div className="vx-about-page">
+      <PageIntro
+        eyebrow="ABOUT 360° VERTEX SOLUTIONS"
+        title="Technology that makes new possibilities practical."
+        copy="We build intelligent software, digital products, and creative technology experiences that help businesses move forward."
+      />
+      <section className="vx-section">
+        <div className="vx-container vx-about-grid">
+          <div>
+            <SectionTitle eyebrow="OUR PURPOSE" title="Make advanced technology accessible." />
+            <p>Our work brings product thinking, modern engineering, and creative technology together to solve practical problems. We aim to make ambitious ideas useful, understandable, and ready to grow.</p>
+            <p>Our long-term direction is product-led: explore recurring business problems, validate the need, and build focused software when evidence supports it. Vertex Business X-Ray is an early product hypothesis—not a released or validated product.</p>
+            <CtaLink to="/contact" secondary>Start a conversation</CtaLink>
+            <Link className="vx-founder-link" to="/founder">Meet the founder <ArrowRight size={15} /></Link>
+          </div>
+          <div className="vx-about-card">
+            <span>360°</span>
+            <h3>Learn.<br />Build.<br />Launch. Grow.</h3>
+            <p>Software · Products · Creative technology</p>
+          </div>
+        </div>
+      </section>
+      <section className="vx-section vx-section--soft">
+        <div className="vx-container">
+          <SectionTitle eyebrow="OUR PRINCIPLES" title="The way we build matters." align="center" />
+          <div className="vx-value-grid">
+            {[
+              ["Problem-first", "Understand real workflows before choosing features."],
+              ["Simplicity", "Reduce steps and make the next action clear."],
+              ["Trust", "Treat security, permissions, and transparency as foundations."],
+              ["Evidence-led", "Validate demand and outcomes before expanding a product."],
+            ].map(([title, copy]) => (
+              <article key={title}>
+                <span><Check size={17} /></span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="vx-cta-band">
+        <div className="vx-container vx-cta-band__inner">
+          <div><Eyebrow>LET’S TALK</Eyebrow><h2>Have an idea worth building?</h2></div>
+          <CtaLink to="/contact">Get in touch</CtaLink>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export function ServicesPage() {
   return <>
-    <PageIntro eyebrow="OUR SERVICES" title="Practical digital support, from first idea to next step." copy="Explore the services we offer to businesses, students, and professionals. Start with the path that fits you." />
+    <section className="vx-page-intro vx-services-intro">
+      <div className="vx-container vx-services-intro__grid">
+        <div><Eyebrow>OUR SOLUTIONS</Eyebrow><h1>From first idea to intelligent product.</h1><p>Explore software, digital experience, and growth services designed around your goals.</p></div>
+        <ServiceIdentity service={servicePages["/business/custom-web-applications"]} path="/business/custom-web-applications" compact />
+      </div>
+    </section>
     <section className="vx-section" id="business-services">
       <div className="vx-container">
         <SectionTitle eyebrow="BUSINESSES & STARTUPS" title="Build and grow your digital presence." copy="Websites and marketing support with a clear scope, useful deliverables, and your business goals in view." />
         <div className="vx-service-grid vx-service-grid--directory">{businessServices.map((service) => { const Icon = service.icon; return <Link className="vx-service-card" to={service.href} key={service.title}><Icon size={20} /><h3>{service.title}</h3><p>{service.copy}</p><span>Explore service <ArrowUpRight size={15} /></span></Link>; })}</div>
         <div className="vx-service-directory__cta"><CtaLink to="/business">Explore business solutions</CtaLink></div>
-      </div>
-    </section>
-    <section className="vx-section vx-section--soft" id="career-services">
-      <div className="vx-container">
-        <SectionTitle eyebrow="STUDENTS & PROFESSIONALS" title="Learn, build, and show what you can do." copy="Career-minded services and project guidance for different stages of your technology journey." />
-        <div className="vx-service-grid vx-service-grid--directory">{studentServices.map((service, index) => <Link className="vx-service-card vx-service-card--student" to={service.href} key={service.title}><span className="vx-service-card__number">0{index + 1}</span><h3>{service.title}</h3><p>{service.copy}</p><span>Explore service <ArrowUpRight size={15} /></span></Link>)}</div>
-        <div className="vx-service-directory__cta"><CtaLink to="/students" secondary>Explore student services</CtaLink></div>
       </div>
     </section>
     <ContactBlock />
@@ -909,7 +1015,7 @@ export function FounderPage() {
         <div className="vx-founder-hero__copy">
           <Eyebrow>THE PERSON BEHIND THE WORK</Eyebrow>
           <h1>Built with curiosity.<br /><span>Grounded in real work.</span></h1>
-          <p>I’m Sasindra, founder of 360° Vertex Solutions and a full-stack developer. I started Vertex to bring practical technology, digital, and career support together for businesses and people building their skills.</p>
+          <p>I’m Sasindra, founder of 360° Vertex Solutions and a full-stack developer. I started Vertex to bring software engineering, digital product thinking, and creative technology together to help turn ambitious ideas into useful experiences.</p>
           <div className="vx-hero__actions"><CtaLink to="/contact">Get in touch</CtaLink><CtaLink to="/work" secondary>See selected work</CtaLink></div>
           <span className="vx-founder-hero__role">FOUNDER & FULL-STACK DEVELOPER · 360° VERTEX SOLUTIONS</span>
         </div>
@@ -922,12 +1028,12 @@ export function FounderPage() {
     <section className="vx-section">
       <div className="vx-container vx-founder-story">
         <div><Eyebrow>WHY I STARTED VERTEX</Eyebrow><h2>Make useful support easier to find.</h2></div>
-        <div><p>I started 360° Vertex Solutions with a simple idea: students, professionals, startups, and businesses should be able to find practical digital and technology support in one place.</p><p>Today, that means two connected paths: helping businesses strengthen their online presence, and helping learners and professionals build projects, portfolios, and professional skills.</p><Link className="vx-text-link" to="/about">More about 360° Vertex <ArrowRight size={15} /></Link></div>
+        <div><p>I started 360° Vertex Solutions with a simple idea: make modern technology more useful and accessible to the people and businesses that need it.</p><p>Today, that means building digital products, software, and creative technology experiences with a focus on practical outcomes and thoughtful engineering.</p><Link className="vx-text-link" to="/about">More about 360° Vertex <ArrowRight size={15} /></Link></div>
       </div>
     </section>
     <section className="vx-section vx-section--soft">
       <div className="vx-container">
-        <SectionTitle eyebrow="WHAT I DO" title="A practical mix of building and guidance." copy="From digital products for businesses to hands-on support for people growing their technical careers." />
+        <SectionTitle eyebrow="WHAT I DO" title="Software, products, and digital experiences." copy="A practical mix of product thinking, engineering, and creative technology." />
         <div className="vx-founder-pillars">
           <article><span>01</span><h3>Business & portfolio websites</h3><p>Responsive websites that present a business, portfolio, or personal profile clearly.</p></article>
           <article><span>02</span><h3>E-commerce platforms</h3><p>Online storefronts that help customers browse products and connect with a business.</p></article>
@@ -936,50 +1042,190 @@ export function FounderPage() {
           <article><span>05</span><h3>Backend & API development</h3><p>Application logic and API connections that support digital products.</p></article>
           <article><span>06</span><h3>Database solutions</h3><p>Data structures and storage designed around a product’s information needs.</p></article>
           <article><span>07</span><h3>AI & automation</h3><p>Explore practical automation ideas that can simplify repetitive work.</p></article>
-          <article><span>08</span><h3>Technology & career guidance</h3><p>Project, portfolio, and learning support for students and professionals.</p><Link to="/students">Explore student services <ArrowRight size={14} /></Link></article>
+          <article><span>08</span><h3>Digital strategy & growth</h3><p>Use technology, analytics, and thoughtful optimisation to improve digital experiences.</p></article>
         </div>
         <div className="vx-service-directory__cta"><CtaLink to="/work" secondary>See selected work</CtaLink></div>
       </div>
     </section>
     <section className="vx-section">
       <div className="vx-container vx-founder-quote">
-        <span>“</span><blockquote>Learn. Build. Launch. Grow.</blockquote><p>A reminder to keep learning, make useful things, and improve through the work.</p>
+        <span>“</span><blockquote>Your Skills. Your Career. Your Future. All in 360°.</blockquote><p>A reminder to keep learning, build real skills, and create opportunities through the work.</p>
       </div>
     </section>
-    <section className="vx-cta-band"><div className="vx-container vx-cta-band__inner"><div><Eyebrow>YOUR VISION. YOUR SKILLS. YOUR FUTURE.</Eyebrow><h2>Tell me what you’re working toward.</h2></div><CtaLink to="/contact">Start a conversation</CtaLink></div></section>
+    <section className="vx-cta-band"><div className="vx-container vx-cta-band__inner"><div><Eyebrow>YOUR NEXT BIG IDEA STARTS HERE</Eyebrow><h2>Tell me what you’re building.</h2></div><CtaLink to="/contact">Start a conversation</CtaLink></div></section>
   </>;
 }
 
 export function ContactPage() {
-  return <><PageIntro eyebrow="CONTACT" title="Tell us what you’re working toward." copy="Whether you run a business or are building your skills and career, start with a simple conversation." /><ContactBlock /></>;
+  return <><PageIntro eyebrow="CONTACT" title="Your next big idea starts here." copy="Tell us what you want to build, improve, or explore. We’ll start with a conversation about fit and scope." /><ContactBlock /></>;
 }
 
 export function ServicePage() {
   const { pathname } = useLocation();
-  const service = servicePages[pathname.replace(/\/$/, "")];
+  const servicePath = pathname.replace(/\/$/, "");
+  const service = servicePages[servicePath];
   if (!service) return <PageIntro eyebrow="SERVICE" title="Let’s find the right solution." copy="Explore our services and tell us what you need." />;
-  const isStudent = pathname.startsWith("/students/");
-  return <><section className={`vx-inner-hero ${isStudent ? "vx-inner-hero--students" : "vx-inner-hero--business"}`}><div className="vx-container vx-service-hero"><Eyebrow>{service.group}</Eyebrow><h1>{service.title}</h1><p>{service.intro}</p><CtaLink to={isStudent ? "/students#enquiry" : "/business#business-enquiry"}>{isStudent ? "Find the right service" : "Enquire about this service"}</CtaLink></div></section><section className="vx-section"><div className="vx-container vx-deliverables"><div><SectionTitle eyebrow="WHAT'S INCLUDED" title="A clear scope, shaped around your needs." copy="We’ll discuss your requirements and confirm the scope before work begins." /><ul>{service.deliverables.map((item) => <li key={item}><Check size={17} />{item}</li>)}</ul>{service.notice && <p className="vx-notice"><ShieldCheck size={18} />{service.notice}</p>}</div><aside className="vx-service-aside"><span>YOUR NEXT STEP</span><h3>Start with a conversation.</h3><p>Share what you have in mind. We’ll discuss fit, scope, and the best way to move forward.</p><CtaLink to="/contact">Make an enquiry</CtaLink></aside></div></section><section className="vx-section vx-section--soft"><div className="vx-container"><SectionTitle eyebrow="EXPLORE MORE" title={isStudent ? "More ways to build your career" : "More ways to grow your business"} /><div className="vx-related-links">{(isStudent ? studentServices : businessServices).filter((item) => item.href !== pathname).slice(0, 4).map((item) => <Link to={item.href} key={item.title}>{item.title}<ArrowUpRight size={15} /></Link>)}</div></div></section></>;
+  return <><section className="vx-inner-hero vx-inner-hero--business"><div className="vx-container vx-inner-hero__grid"><div className="vx-service-hero"><Eyebrow>{service.group}</Eyebrow><h1>{service.title}</h1><p>{service.intro}</p><CtaLink to="/contact">Enquire about this solution</CtaLink></div><ServiceIdentity service={service} path={servicePath} /></div></section><section className="vx-section"><div className="vx-container vx-deliverables"><div><SectionTitle eyebrow="WHAT'S INCLUDED" title="A clear scope, shaped around your needs." copy="We’ll discuss your requirements and confirm the scope before work begins." /><ul>{service.deliverables.map((item) => <li key={item}><Check size={17} />{item}</li>)}</ul>{service.notice && <p className="vx-notice"><ShieldCheck size={18} />{service.notice}</p>}</div><aside className="vx-service-aside"><span>YOUR NEXT STEP</span><h3>Start with a conversation.</h3><p>Share what you have in mind. We’ll discuss fit, scope, and the best way to move forward.</p><CtaLink to="/contact">Make an enquiry</CtaLink></aside></div></section><section className="vx-section vx-section--soft"><div className="vx-container"><SectionTitle eyebrow="EXPLORE MORE" title="More ways to build and grow" /><div className="vx-related-links">{businessServices.filter((item) => item.href !== servicePath).slice(0, 4).map((item) => <Link to={item.href} key={item.title}>{item.title}<ArrowUpRight size={15} /></Link>)}</div></div></section></>;
 }
 
 export function LegalPage() {
   const { pathname } = useLocation();
   const isPrivacy = pathname === "/privacy-policy";
-  return <><PageIntro eyebrow="LEGAL" title={isPrivacy ? "Privacy policy" : "Terms of use"} copy={`Last updated: ${new Date().toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}`} /><section className="vx-section"><div className="vx-container vx-legal"><h2>{isPrivacy ? "Information you choose to share" : "Using this website"}</h2><p>{isPrivacy ? "When you contact 360° Vertex Solutions, you may choose to share details such as your name, email address, phone number, project goals, or service interests. Enquiry forms open a prepared message in WhatsApp; you review and send that message yourself." : "This website provides general information about digital, educational, and professional services. Service scope, pricing, timing, and deliverables are agreed directly before work begins."}</p><h2>{isPrivacy ? "How information is used" : "Service and educational information"}</h2><p>{isPrivacy ? "Information you send is used to respond to your enquiry and discuss the services you requested. Do not include passwords, payment details, or other sensitive information in a general enquiry." : "Learning and project guidance supports independent learning and must be used consistently with your institution’s academic-integrity policies. Career preparation does not guarantee job placement, selection, or interview outcomes."}</p><h2>{isPrivacy ? "Your choices and questions" : "External links and enquiries"}</h2><p>{isPrivacy ? "You can choose not to submit an enquiry form and instead contact us through the listed channels. For questions about information you have shared, email <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>." : "Links to third-party websites are provided for convenience. Their content, availability, and policies are managed by those third parties. Contact us to discuss any service before making a decision."}</p><p>This page is general website information and is not legal advice.</p></div></section></>;
+  return <><PageIntro eyebrow="LEGAL" title={isPrivacy ? "Privacy policy" : "Terms of use"} copy={`Last updated: ${new Date().toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}`} /><section className="vx-section"><div className="vx-container vx-legal"><h2>{isPrivacy ? "Information you choose to share" : "Using this website"}</h2><p>{isPrivacy ? "When you contact 360° Vertex Solutions, you may choose to share details such as your name, email address, phone number, project goals, or service interests. Enquiry forms open a prepared message in WhatsApp; you review and send that message yourself." : "This website provides general information about software, digital products, and technology services. Service scope, pricing, timing, and deliverables are agreed directly before work begins."}</p><h2>{isPrivacy ? "How information is used" : "Service information"}</h2><p>{isPrivacy ? "Information you send is used to respond to your enquiry and discuss the services you requested. Do not include passwords, payment details, or other sensitive information in a general enquiry." : "Descriptions of services and capabilities are informational. Project scope and outcomes depend on requirements and are agreed before work begins."}</p><h2>{isPrivacy ? "Your choices and questions" : "External links and enquiries"}</h2><p>{isPrivacy ? "You can choose not to submit an enquiry form and instead contact us through the listed channels. For questions about information you have shared, email <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>." : "Links to third-party websites are provided for convenience. Their content, availability, and policies are managed by those third parties. Contact us to discuss any service before making a decision."}</p><p>This page is general website information and is not legal advice.</p></div></section></>;
+}
+
+export function FaqPage() {
+  const groups = [
+    {
+      title: "About 360° Vertex Solutions",
+      items: [
+        ["What is 360° Vertex Solutions?", "An all-in-one platform providing educational resources, career development services, IT solutions, and project support for students and job seekers."],
+        ["Who can use your services?", "Students, fresh graduates, working professionals looking to upskill, and businesses that need websites, software, or digital support."],
+        ["How do I get started?", "Use the contact page to share what you need. We start with a short conversation about your goals and the right next step."],
+      ],
+    },
+    {
+      title: "Student Resources & Projects",
+      items: [
+        ["Do you provide study materials and notes?", "Yes. Our resource centre is being built with semester material, programming notes, interview preparation, and project documentation."],
+        ["Can you help with mini and final-year projects?", "Yes. We support mini projects, final-year projects, and academic project guidance across Java, Python, web, and AI/ML."],
+        ["Do you guarantee academic results or placements?", "No. We provide guidance, resources, and support. Outcomes depend on your own work, effort, and decisions."],
+      ],
+    },
+    {
+      title: "IT Services",
+      items: [
+        ["What IT services do you offer?", "Portfolio and business websites, e-commerce, landing pages, custom web applications, and digital marketing support."],
+        ["How is a project priced?", "Scope, timeline, and budget are discussed and agreed before any work begins. Share your requirements for a clear proposal."],
+        ["Do you maintain websites after launch?", "Yes. We can discuss ongoing maintenance, updates, and improvements after launch."],
+      ],
+    },
+    {
+      title: "Getting in touch",
+      items: [
+        ["How can I contact the team?", "Use the contact form, WhatsApp, or email listed on the contact page. Enquiries start a conversation — nothing is committed automatically."],
+        ["What information should I share?", "Your name, contact details, the service you need, and a short description of your goal or project."],
+      ],
+    },
+  ];
+  const [open, setOpen] = useState("0-0");
+  return <>
+    <PageIntro eyebrow="FAQ" title="Everything you wanted to ask." copy="Answers about our services, student resources, career support, and how to get started." />
+    <section className="vx-section"><div className="vx-container vx-faq-page">
+      {groups.map((group, groupIndex) => (
+        <div className="vx-faq-group" key={group.title}>
+          <h2>{group.title}</h2>
+          <div className="vx-faq-list">
+            {group.items.map(([question, answer], itemIndex) => {
+              const id = `${groupIndex}-${itemIndex}`;
+              const isOpen = open === id;
+              return (
+                <div className={`vx-faq${isOpen ? " is-open" : ""}`} key={question}>
+                  <button type="button" aria-expanded={isOpen} onClick={() => setOpen(isOpen ? null : id)}>
+                    <span>{question}</span><span>{isOpen ? "−" : "+"}</span>
+                  </button>
+                  {isOpen && <p>{answer}</p>}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div></section>
+    <section className="vx-cta-band"><div className="vx-container vx-cta-band__inner"><div><Eyebrow>STILL HAVE A QUESTION?</Eyebrow><h2>Talk to us directly.</h2><p>We’ll help you find the right service or resource.</p></div><CtaLink to="/contact">Contact us</CtaLink></div></section>
+  </>;
+}
+
+const roadmaps = [
+  { title: "Java Developer", level: "Beginner → Advanced", steps: ["Core Java and OOP fundamentals", "Collections, generics, and exceptions", "JDBC and database connectivity", "Spring Boot and REST APIs", "Build and deploy a full-stack project"] },
+  { title: "Frontend Developer", level: "Beginner → Advanced", steps: ["HTML and semantic structure", "CSS layout, Flexbox, and Grid", "JavaScript and DOM fundamentals", "React components and state", "Responsive, accessible interfaces"] },
+  { title: "Backend Developer", level: "Beginner → Advanced", steps: ["Programming fundamentals", "Databases and SQL", "REST API design principles", "Authentication and security basics", "Deployment and monitoring basics"] },
+  { title: "Full Stack Developer", level: "Intermediate → Advanced", steps: ["Frontend fundamentals", "Backend and API development", "Database modelling", "Connecting frontend to backend", "Deploying a complete application"] },
+  { title: "Software Testing", level: "Beginner → Advanced", steps: ["Testing fundamentals and terminology", "Manual test case design", "Automation basics with Selenium", "API testing with Postman", "CI and reporting basics"] },
+  { title: "AI / ML", level: "Intermediate → Advanced", steps: ["Python and data handling", "Maths for machine learning", "Supervised and unsupervised learning", "Model evaluation and tuning", "Deploying a simple ML project"] },
+];
+
+export function CareerHubPage() {
+  const [active, setActive] = useState(0);
+  const [done, setDone] = useState({});
+  const roadmap = roadmaps[active];
+  const completed = roadmap.steps.filter((_, index) => done[`${active}-${index}`]).length;
+  const progress = Math.round((completed / roadmap.steps.length) * 100);
+  const toggleStep = (index) => setDone((prev) => ({ ...prev, [`${active}-${index}`]: !prev[`${active}-${index}`] }));
+
+  return <>
+    <PageIntro eyebrow="CAREER HUB" title="Roadmaps that turn learning into a career path." copy="Follow structured learning paths, track your progress, and prepare for technical interviews with clear step-by-step guidance." />
+    <section className="vx-section"><div className="vx-container">
+      <div className="vx-stage-picker" aria-label="Choose a career roadmap">
+        {roadmaps.map((item, index) => (
+          <button className={index === active ? "is-active" : ""} key={item.title} type="button" aria-pressed={index === active} onClick={() => setActive(index)}>{item.title}</button>
+        ))}
+      </div>
+      <div className="vx-roadmap">
+        <div className="vx-roadmap__head">
+          <div><h3>{roadmap.title} Roadmap</h3><span>{roadmap.level}</span></div>
+          <strong>{progress}%</strong>
+        </div>
+        <div className="vx-roadmap__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={progress} aria-label={`${roadmap.title} roadmap progress`}>
+          <span style={{ width: `${progress}%` }} />
+        </div>
+        <p className="vx-roadmap__note">Tap a step to mark it complete — your progress updates instantly.</p>
+        <ol className="vx-roadmap__steps">
+          {roadmap.steps.map((step, index) => {
+            const isDone = Boolean(done[`${active}-${index}`]);
+            return (
+              <li key={step} className={isDone ? "is-done" : ""}>
+                <button type="button" aria-pressed={isDone} onClick={() => toggleStep(index)}>
+                  <span className="vx-roadmap__step-no">{isDone ? <Check size={15} /> : String(index + 1).padStart(2, "0")}</span>
+                  <span className="vx-roadmap__step-label">{step}</span>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </div></section>
+    <section className="vx-section vx-section--soft"><div className="vx-container vx-career-cols">
+      <div><SectionTitle eyebrow="INTERVIEW PREPARATION" title="Practise the questions that matter." /><ul className="vx-career-list"><li><Check size={16} />Technical questions by role and technology</li><li><Check size={16} />Structured answers and explanation tips</li><li><Check size={16} />Common HR and behavioural questions</li><li><Check size={16} />Mock-interview guidance</li></ul><Link className="vx-text-link" to="/contact">Ask about interview preparation <ArrowRight size={16} /></Link></div>
+      <div><SectionTitle eyebrow="JOB APPLICATION SUPPORT" title="Apply with clarity and confidence." /><ul className="vx-career-list"><li><Check size={16} />Resume and profile review guidance</li><li><Check size={16} />How to tailor applications per role</li><li><Check size={16} />Preparing for the first interview round</li><li><Check size={16} />Follow-up and communication tips</li></ul><p className="vx-notice"><ShieldCheck size={18} />We share job application links only when they are verified. We do not guarantee interviews or placements.</p></div>
+    </div></section>
+    <section className="vx-cta-band"><div className="vx-container vx-cta-band__inner"><div><Eyebrow>READY FOR THE NEXT STEP?</Eyebrow><h2>Let’s map your career path together.</h2></div><CtaLink to="/contact">Start your journey</CtaLink></div></section>
+  </>;
+}
+
+export function NotFoundPage() {
+  return (
+    <section className="vx-inner-hero vx-notfound">
+      <div className="vx-container vx-notfound__inner">
+        <Eyebrow>ERROR 404</Eyebrow>
+        <h1>Lost in the <span className="vx-grad">360°</span>?</h1>
+        <p>This page has moved or never existed. Let’s get you back on track.</p>
+        <div className="vx-notfound__actions">
+          <CtaLink to="/">Back to home</CtaLink>
+          <CtaLink to="/services" secondary>Explore services</CtaLink>
+        </div>
+        <div className="vx-notfound__links">
+          <Link to="/career-hub">Career Hub <ArrowRight size={15} /></Link>
+          <Link to="/contact">Contact Us <ArrowRight size={15} /></Link>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function PageMeta() {
   const location = useLocation();
   useEffect(() => {
     const pages = {
-      "/": ["360° Vertex Solutions | Your Vision. Your Skills. Your Future.", "Digital solutions for businesses and career growth support for students and professionals."],
-      "/services": ["Services | 360° Vertex Solutions", "Explore digital services for businesses and practical technology and career support for students and professionals."],
+      "/": ["360° Vertex Solutions | Student Career Development & IT Services", "Build your future with career development, IT solutions, educational resources, and student project support. Your skills. Your career. Your future. All in 360°."],
+      "/services": ["Services | 360° Vertex Solutions", "Portfolio websites, resumes, LinkedIn optimisation, student projects, educational resources, and career development support."],
       "/business": ["Business Solutions | 360° Vertex Solutions", "Websites, e-commerce, and digital marketing for businesses and startups."],
-      "/students": ["Student & Professional Services | 360° Vertex Solutions", "Portfolio websites, project guidance, resumes, and career development support."],
       "/work": ["Our Work | 360° Vertex Solutions", "Explore website, education, CRM, event, and technical project previews."],
-      "/about": ["About | 360° Vertex Solutions", "One brand bringing business solutions and student and professional growth together."],
+      "/about": ["About | 360° Vertex Solutions", "Learn how 360° Vertex Solutions bridges academic learning and industry requirements for students, job seekers, and businesses."],
       "/founder": ["Founder | 360° Vertex Solutions", "Meet Sasindra, founder of 360° Vertex Solutions."],
-      "/contact": ["Contact | 360° Vertex Solutions", "Tell us about your business or career goals."],
+      "/contact": ["Contact | 360° Vertex Solutions", "Tell us what you want to build, improve, or explore."],
+      "/career-hub": ["Career Hub | 360° Vertex Solutions", "Interactive career roadmaps for Java, frontend, backend, full-stack, testing, and AI/ML with interview and job application support."],
+      "/faq": ["FAQ | 360° Vertex Solutions", "Answers about services, student resources, career support, and how to get started with 360° Vertex Solutions."],
       "/privacy-policy": ["Privacy Policy | 360° Vertex Solutions", "How 360° Vertex Solutions handles information shared through enquiries."],
       "/terms": ["Terms | 360° Vertex Solutions", "Information about using the 360° Vertex Solutions website and services."],
     };
@@ -987,10 +1233,10 @@ export function PageMeta() {
     const details = pages[location.pathname] || servicePages[location.pathname] || (project && [`${project.title} | Project Preview | 360° Vertex Solutions`, project.description]);
     const title = details
       ? Array.isArray(details) ? details[0] : `${details.title} | 360° Vertex Solutions`
-      : "360° Vertex Solutions | Business & Career Services";
+      : "360° Vertex Solutions | Student Career Development & IT Services";
     const content = details
       ? Array.isArray(details) ? details[1] : details.intro
-      : "Digital solutions for businesses and practical technology and career support for students and professionals.";
+      : "Career development, IT solutions, educational resources, and student project support for students and job seekers.";
     document.title = title;
     const setMeta = (selector, attribute, value, property) => {
       let element = document.querySelector(selector);

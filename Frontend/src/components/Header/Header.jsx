@@ -131,7 +131,6 @@ const NAV = [
     cta: { label: "Build with Us", path: "/technology/web-development" },
   },
 
-  { label: "Testimonials", path: "/testimonials" },
   { label: "Blog", path: "/blog" },
   { label: "Contact", path: "/contact" },
 ];
